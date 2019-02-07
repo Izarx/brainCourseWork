@@ -21,6 +21,13 @@
         </plugins>
     </build>
 
+    <properties>
+        <!-- The main class to start by executing java -jar -->
+        <start-class>org.brainacad.Application</start-class>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

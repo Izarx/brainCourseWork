@@ -6,7 +6,11 @@ import javax.persistence.*;
  * Class for create table of spare part models and types
  */
 
+@Entity
+@Table (name = "spare_models", schema = "upsproject")
 public class SparePart implements Removable {
+
+    //FIELDS
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "upsproject.spare_parts_seq")
@@ -23,6 +27,19 @@ public class SparePart implements Removable {
     @Column
     @Enumerated(EnumType.STRING)
     private SparePartsTypes type;
+
+    //CONSTRUCTORS
+
+
+    public SparePart() {}
+
+    public SparePart(String name, Double price, SparePartsTypes type) {
+        this.name = name;
+        this.price = price;
+        this.type = type;
+    }
+
+    //SETTERS & GETTERS
 
     public long getId() {
         return id;

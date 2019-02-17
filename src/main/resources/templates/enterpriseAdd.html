@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <title>Log in with your account</title>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/enterpriseAdd}"
+          th:object="${enterpriseForm}"
+          method="post">
+        <div class="form-group form-item">
+            <label for="name">Name:</label>
+            <input type="text" th:field="*{name}" id="name" autofocus="autofocus" placeholder="Name">
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
+        <div class="form-group form-item">
+            <label for="address">Address:</label>
+            <input type="text" id="address" th:field="*{address}" placeholder="Address">
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">ERROR</p>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <input type="submit" name="login-submit" id="login-submit" value="Add">
+                </div>
+            </div>
+        </div>
+    </form>
+    <h4 class="text-center"><a href="@{/enterprises}">Enterprises List</a></h4>
+</div>
+</body>
+</html>

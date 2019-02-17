@@ -13,7 +13,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/upsdb
     username: baproject
-    password: 907PffH2263
+    password: qwerty12345
 
     # HikariCP настройки
     hikari:

@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Enterprises List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>Enterprises List</h1>
+<a href="enterpriseAdd">Add New Enterprise</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+        </tr>
+        <tr th:each ="enterprise : ${enterprises}">
+            <td th:utext="${enterprise.name}">...</td>
+            <td th:utext="${enterprise.address}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

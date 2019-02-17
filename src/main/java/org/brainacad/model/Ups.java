@@ -1,21 +1,26 @@
 package org.brainacad.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Class to create table of UPS models
  */
 
 @Entity
-@Table (name = "ups_models", schema = "upsproject")
-
+@Table (name = "upses", schema = "upsproject")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Ups implements Cabinet, Removable {
+
+    //FIELDS
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "upsproject.upses_seq")
     @SequenceGenerator(name = "upsproject.upses_seq", sequenceName = "upsproject.upses_seq", allocationSize = 1)
     @Column
-    private long id;
+    private Long id;
 
     @Column
     private String name;
@@ -27,11 +32,28 @@ public class Ups implements Cabinet, Removable {
     @Enumerated(EnumType.STRING)
     private UpsTypes type;
 
-    public long getId() {
+    @OneToMany(mappedBy = "ups", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UpsImpl> upsImpls;
+
+    //CONSTRUCTORS
+
+
+    public Ups() {
+    }
+
+    public Ups(String name, Double price, UpsTypes type) {
+        this.name = name;
+        this.price = price;
+        this.type = type;
+    }
+
+    //SETTERS & GETTERS
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -57,5 +79,13 @@ public class Ups implements Cabinet, Removable {
 
     public void setType(UpsTypes type) {
         this.type = type;
+    }
+
+    public Set<UpsImpl> getUpsImpls() {
+        return upsImpls;
+    }
+
+    public void setUpsImpls(Set<UpsImpl> upsImpls) {
+        this.upsImpls = upsImpls;
     }
 }

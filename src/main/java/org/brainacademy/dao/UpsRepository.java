@@ -1,0 +1,10 @@
+package org.brainacademy.dao;
+
+import org.brainacademy.model.Ups;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface UpsRepository extends JpaRepository<Ups, Long> {
+
+    Ups findByName(String name);
+
+}

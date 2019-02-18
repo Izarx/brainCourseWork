@@ -41,11 +41,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { // рас�
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests() // блок запросов требующих авторизацию
-                .antMatchers("/resources/**", "/registration", "/css/**", "/api/**").permitAll() // исключение
+                .antMatchers("/resources/**", "/users/registration", "/css/**", "/api/**").permitAll() // исключение
                 .anyRequest().authenticated() // все остальные запросы только после логина
                 .and() // определяем след. блок
                 .formLogin()// блок для логина
-                .loginPage("/login") // страница логина
+                .loginPage("/users/login") // страница логина
                 .usernameParameter("email") // поле имени юзера в моделе
                 .passwordParameter("password") // поле пароля в моделе
                 .permitAll() // доступ на стр. логина всем

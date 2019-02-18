@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-    <form th:action="@{/enterpriseAdd}"
+    <form th:action="@{/add}"
           th:object="${enterpriseForm}"
           method="post">
         <div class="form-group form-item">
@@ -29,7 +29,7 @@
             </div>
         </div>
     </form>
-    <h4 class="text-center"><a href="@{/enterprises}">Enterprises List</a></h4>
+    <h4 class="text-center"><a th:href="@{/enterprises/list}">Enterprises List</a></h4>
 </div>
 </body>
 </html>

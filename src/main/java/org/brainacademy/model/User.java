@@ -9,7 +9,7 @@ public class User {
 
     @Id // указание что это поле являеться ключем
     // Описание последовательности для генерации ID
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column // аннотация помечающая поле как колонку в таблице БД, название должно соответствовать
     private Long id;
 

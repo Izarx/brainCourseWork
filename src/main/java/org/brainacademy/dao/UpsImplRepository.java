@@ -9,5 +9,9 @@ public interface UpsImplRepository extends JpaRepository<UpsImpl, Long> {
 
     List<UpsImpl> findByUpsId (Long upsId);
 
-    List<UpsImpl> findByEnterpriseIg (Long enterpiseId);
+    List<UpsImpl> findByEnterpriseId (Long enterpiseId);
+
+    UpsImpl findByName (String name);
+
+    List<UpsImpl> findByIsBroken (Boolean isBroken);
 }

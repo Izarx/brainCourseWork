@@ -16,19 +16,19 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/enterprises/api")
 public class EnterpriseController {
 
     @Autowired
     private EnterpriseService enterpriseService;
 
-    @GetMapping(value = "/enterprises")
+    @GetMapping(value = "/list")
     public ResponseEntity<List<Enterprise>> enterpriseDetails(){
         List<Enterprise> enterpriseDetails = enterpriseService.getList();
         return new ResponseEntity<List<Enterprise>>(enterpriseDetails, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/enterpriseAdd")
+    @PostMapping(value = "/add")
     public ResponseEntity<?> saveEnterpise( @RequestBody Enterprise enterprise) {
 
         enterpriseService.save(enterprise);

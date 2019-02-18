@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Date;
+
 @Controller // Помечаем класс как контроллер обрабатывающий роутинг для стр. авторизации
 public class AuthController {
 
@@ -44,6 +46,7 @@ public class AuthController {
         newUser.setEmail(userForm.getEmail());
         PasswordEncoder encoder = new BCryptPasswordEncoder();
         newUser.setPassword(encoder.encode(userForm.getPassword()));
+        newUser.setCreationDate(new Date());
         userService.save(newUser);
 
         securityService.autoLogin(userForm.getEmail(), userForm.getPassword());

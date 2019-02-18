@@ -11,15 +11,15 @@ import java.util.Date;
 import java.util.List;
 
 @RestController // Помечаем класс как контроллер обрабатывающий REST запросы
-@RequestMapping("api")
+@RequestMapping("users/api")
 public class UserController {
 
     // Иньектируем сервис для работы с пользователями
     @Autowired
     private UserService userService;
 
-    // Обработчик для запроса GET http://{host:port}/users
-    @GetMapping(value = "/users")
+    // Обработчик для запроса GET http://{host:port}/list
+    @GetMapping(value = "/list")
     public ResponseEntity<List<User>> userDetails() {
         List<User> userDetails = userService.getList();
         return new ResponseEntity<List<User>>(userDetails, HttpStatus.OK);

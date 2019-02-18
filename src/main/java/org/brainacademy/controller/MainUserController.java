@@ -28,11 +28,11 @@ public class MainUserController {
         return "index";
     }
 
-    @GetMapping(value = { "/list" })
+    @GetMapping(value = { "/users/list" })
     public String personList(Model model) {
 
         model.addAttribute("users", userService.getList());
-        return "list";
+        return "users/list";
     }
 
 }

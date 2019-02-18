@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-    <form th:action="@{/login}" method="post">
+    <form th:action="@{/users/login}" method="post">
         <div class="form-group form-item">
             <label for="email">Username:</label>
             <input type="text" id="email" name="email" autofocus="autofocus" placeholder="Username">
@@ -32,7 +32,7 @@
             </div>
         </div>
     </form>
-    <h4 class="text-center"><a th:href="@{/registration}">Create an account</a></h4>
+    <h4 class="text-center"><a th:href="@{/users/registration}">Create an account</a></h4>
 </div>
 </body>
 </html>

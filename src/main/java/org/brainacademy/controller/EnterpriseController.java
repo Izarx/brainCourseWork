@@ -14,7 +14,6 @@ import java.util.List;
  * Class controller for handling REST requests. Entity to use db is Enterprise
  */
 
-
 @RestController
 @RequestMapping("/enterprises/api")
 public class EnterpriseController {

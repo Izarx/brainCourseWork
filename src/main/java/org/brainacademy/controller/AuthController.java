@@ -14,10 +14,12 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Date;
 
 @Controller // Помечаем класс как контроллер обрабатывающий роутинг для стр. авторизации
+@RequestMapping("/users")
 public class AuthController {
 
     // Иньектируем сервис для работы с пользователями
@@ -32,7 +34,7 @@ public class AuthController {
     public String registration(Model model) {
         model.addAttribute("userForm", new UserForm());
 
-        return "registration";
+        return "users/registration";
     }
 
     @PostMapping(value = "/registration")
@@ -40,7 +42,7 @@ public class AuthController {
         userValidator.validate(userForm, bindingResult);
 
         if (bindingResult.hasErrors()) {
-            return "registration";
+            return "users/registration";
         }
         User newUser = new User();
         newUser.setEmail(userForm.getEmail());
@@ -61,7 +63,7 @@ public class AuthController {
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");
 
-        return "login";
+        return "users/login";
     }
 
 }

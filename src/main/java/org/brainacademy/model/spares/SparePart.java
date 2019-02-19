@@ -1,4 +1,6 @@
-package org.brainacademy.model;
+package org.brainacademy.model.spares;
+
+import org.brainacademy.model.api.Removable;
 
 import javax.persistence.*;
 

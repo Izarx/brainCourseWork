@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <title>Add new Model of UPS</title>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/upses/add}"
+          th:object="${upsForm}"
+          method="post">
+        <div class="form-group form-item">
+            <label for="name">Model:</label>
+            <input type="text" th:field="*{name}" id="name" autofocus="autofocus" placeholder="Name">
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
+        <div class="form-group form-item">
+            <label for="price">Price:</label>
+            <input type="text" id="price" th:field="*{price}" placeholder="Price">
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">ERROR</p>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <input type="submit" name="login-submit" id="login-submit" value="Add">
+                </div>
+            </div>
+        </div>
+    </form>
+    <h4 class="text-center"><a th:href="@{/upses/list}">UPS Models List</a></h4>
+</div>
+</body>
+</html>

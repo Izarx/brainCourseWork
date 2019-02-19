@@ -1,6 +1,8 @@
-package org.brainacademy.model;
+package org.brainacademy.model.upses;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.brainacademy.model.api.Cabinet;
+import org.brainacademy.model.api.Removable;
 
 import javax.persistence.*;
 import java.util.Set;

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>UPS List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>UPS Models List</h1>
+<a th:href="@{/upses/add}">Add New Model of UPS</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Price</th>
+        </tr>
+        <tr th:each ="ups : ${upses}">
+            <td th:utext="${ups.id}">...</td>
+            <td th:utext="${ups.name}">...</td>
+            <td th:utext="${ups.price}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

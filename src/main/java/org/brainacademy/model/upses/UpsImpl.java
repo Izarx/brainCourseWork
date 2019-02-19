@@ -1,7 +1,9 @@
-package org.brainacademy.model;
+package org.brainacademy.model.upses;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.brainacademy.model.Enterprise;
+import org.brainacademy.model.upses.Ups;
 
 import javax.persistence.*;
 

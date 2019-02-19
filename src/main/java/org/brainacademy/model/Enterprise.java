@@ -1,5 +1,8 @@
 package org.brainacademy.model;
 
+import org.brainacademy.model.api.Cabinet;
+import org.brainacademy.model.upses.UpsImpl;
+
 import javax.persistence.*;
 import java.util.Set;
 

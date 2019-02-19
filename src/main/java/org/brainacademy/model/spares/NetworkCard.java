@@ -1,4 +1,4 @@
-package org.brainacademy.model;
+package org.brainacademy.model.spares;
 
 public class NetworkCard extends SparePart {
 }

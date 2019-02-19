@@ -1,6 +1,6 @@
 package org.brainacademy.dao;
 
-import org.brainacademy.model.Ups;
+import org.brainacademy.model.upses.Ups;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

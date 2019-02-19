@@ -12,10 +12,12 @@
 <div>
     <table border="1">
         <tr>
+            <th>ID</th>
             <th>Name</th>
             <th>Address</th>
         </tr>
         <tr th:each ="enterprise : ${enterprises}">
+            <td th:utext="${enterprise.id}">...</td>
             <td th:utext="${enterprise.name}">...</td>
             <td th:utext="${enterprise.address}">...</td>
         </tr>

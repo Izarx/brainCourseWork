@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/enterprises")
-public class MainEntController {
+public class MainEnterpriseController {
 
     @Autowired
     private EnterpriseService enterpriseService;
@@ -24,14 +24,12 @@ public class MainEntController {
 
     @GetMapping(value = { "/list" })
     public String enterpriseList(Model model) {
-
         model.addAttribute("enterprises", enterpriseService.getList());
         return "enterprises/list";
     }
 
     @GetMapping(value = { "/add" })
     public String showAddEnterprisePage(Model model) {
-
         EnterpriseForm enterpriseForm = new EnterpriseForm();
         model.addAttribute("enterpriseForm", enterpriseForm);
         return "enterprises/add";

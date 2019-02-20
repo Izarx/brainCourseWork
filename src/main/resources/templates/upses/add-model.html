@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-    <form th:action="@{/upses/add}"
+    <form th:action="@{/upses/add-model}"
           th:object="${upsForm}"
           method="post">
         <div class="form-group form-item">
@@ -29,7 +29,7 @@
             </div>
         </div>
     </form>
-    <h4 class="text-center"><a th:href="@{/upses/list}">UPS Models List</a></h4>
+    <h4 class="text-center"><a th:href="@{/upses/list-models}">UPS Models List</a></h4>
 </div>
 </body>
 </html>

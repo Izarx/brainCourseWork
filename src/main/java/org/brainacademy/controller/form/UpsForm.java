@@ -1,6 +1,6 @@
 package org.brainacademy.controller.form;
 
-import org.brainacademy.model.upses.UpsTypes;
+import org.brainacademy.model.models.UpsTypes;
 
 public class UpsForm {
 

@@ -1,4 +1,4 @@
-package org.brainacademy.model.upses;
+package org.brainacademy.model.models;
 
 public enum UpsTypes {
     ON_LINE,

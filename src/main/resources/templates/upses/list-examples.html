@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>UPS Examples List</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+</head>
+<body>
+<h1>UPS Examples List</h1>
+<a th:href="@{/upses/add-example}">Add New Example of UPS</a>
+<br/><br/>
+<div>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Serial Number</th>
+        </tr>
+        <tr th:each ="upsImpl : ${upsImples}">
+            <td th:utext="${upsImpl.id}">...</td>
+            <td th:utext="${upsImpl.name}">...</td>
+            <td th:utext="${upsImpl.serialNumber}">...</td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

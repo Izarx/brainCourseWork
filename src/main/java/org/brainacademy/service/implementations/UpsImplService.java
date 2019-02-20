@@ -1,6 +1,6 @@
-package org.brainacademy.service.upses;
+package org.brainacademy.service.implementations;
 
-import org.brainacademy.model.upses.UpsImpl;
+import org.brainacademy.model.implementations.UpsImpl;
 
 import java.util.List;
 

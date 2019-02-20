@@ -1,4 +1,4 @@
-package org.brainacademy.controller;
+package org.brainacademy.controller.users;
 
 import org.brainacademy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

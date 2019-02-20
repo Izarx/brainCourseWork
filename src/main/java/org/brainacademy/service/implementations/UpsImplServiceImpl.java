@@ -1,7 +1,7 @@
-package org.brainacademy.service.upses;
+package org.brainacademy.service.implementations;
 
 import org.brainacademy.dao.UpsImplRepository;
-import org.brainacademy.model.upses.UpsImpl;
+import org.brainacademy.model.implementations.UpsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

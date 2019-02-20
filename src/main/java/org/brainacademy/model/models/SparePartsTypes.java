@@ -1,4 +1,4 @@
-package org.brainacademy.model.spares;
+package org.brainacademy.model.models;
 
 public enum SparePartsTypes {
     BATTERY,

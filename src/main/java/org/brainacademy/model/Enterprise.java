@@ -1,7 +1,7 @@
 package org.brainacademy.model;
 
 import org.brainacademy.model.api.Cabinet;
-import org.brainacademy.model.upses.UpsImpl;
+import org.brainacademy.model.implementations.UpsImpl;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -13,7 +13,7 @@ import java.util.Set;
 
 @Entity
 @Table (name = "enterprises", schema = "upsproject")
-public class Enterprise implements Cabinet {
+public class Enterprise extends ProjectEntity implements Cabinet {
 
     //FIELDS
 
@@ -31,16 +31,6 @@ public class Enterprise implements Cabinet {
 
     @OneToMany(mappedBy = "ups", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<UpsImpl> upsImpls;
-
-    //CONSTRUCTORS
-
-
-    public Enterprise() {}
-
-    public Enterprise(String name, String address) {
-        this.name = name;
-        this.address = address;
-    }
 
     //GETTERS & SETTERS
 

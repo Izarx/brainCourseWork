@@ -1,9 +1,10 @@
-package org.brainacademy.model.upses;
+package org.brainacademy.model.implementations;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.brainacademy.model.Enterprise;
-import org.brainacademy.model.upses.Ups;
+import org.brainacademy.model.api.Cabinet;
+import org.brainacademy.model.models.Ups;
 
 import javax.persistence.*;
 
@@ -14,12 +15,12 @@ import javax.persistence.*;
 @Entity
 @Table(name = "upses_impl", schema = "upsproject")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class UpsImpl extends Ups {
+public class UpsImpl extends Implementation implements Cabinet {
 
     //FIELDS
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column
     private Long id;
 
@@ -57,22 +58,18 @@ public class UpsImpl extends Ups {
     //SETTERS & GETTERS
 
 
-    @Override
     public Long getId() {
         return id;
     }
 
-    @Override
     public void setId(Long id) {
         this.id = id;
     }
 
-    @Override
     public String getName() {
         return name;
     }
 
-    @Override
     public void setName(String name) {
         this.name = name;
     }

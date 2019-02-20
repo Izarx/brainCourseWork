@@ -1,8 +1,8 @@
-package org.brainacademy.controller.upses;
+package org.brainacademy.controller.models;
 
 import org.brainacademy.controller.form.UpsForm;
-import org.brainacademy.model.upses.Ups;
-import org.brainacademy.service.upses.UpsService;
+import org.brainacademy.model.models.Ups;
+import org.brainacademy.service.models.UpsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,20 +22,20 @@ public class MainUpsController {
     @Value("${errorUps.message}")
     private String errorMessage;
 
-    @GetMapping(value = { "/list" })
+    @GetMapping(value = { "/list-models" })
     public String upsesList (Model model) {
         model.addAttribute("upses", upsService.getList());
-        return "upses/list";
+        return "upses/list-models";
     }
 
-    @GetMapping(value = { "/add" })
-    public String showAddEnterprisePage(Model model){
+    @GetMapping(value = { "/add-model" })
+    public String showAddUpsPage(Model model){
         UpsForm upsForm = new UpsForm();
         model.addAttribute("upsForm", upsForm);
-        return "upses/add";
+        return "upses/add-model";
     }
 
-    @PostMapping(value = {"/add"})
+    @PostMapping(value = {"/add-model"})
     public String saveUps(Model model, @ModelAttribute ("upsForm") UpsForm upsForm) {
 
         String name = upsForm.getName();
@@ -47,11 +47,11 @@ public class MainUpsController {
             newUps.setPrice(price);
             upsService.save(newUps);
 
-            return "redirect:/upses/list";
+            return "redirect:/upses/list-models";
         }
 
         model.addAttribute("errorMessage", errorMessage);
-        return "upses/add";
+        return "upses/add-model";
     }
 
 }

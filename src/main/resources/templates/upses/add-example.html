@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <title>Add new Example of UPS</title>
+</head>
+<body>
+<div class="container">
+    <form th:action="@{/upses/add-example}"
+          th:object="${upsImplForm}"
+          method="post">
+        <div class="form-group form-item">
+            <label for="name">Name:</label>
+            <input type="text" th:field="*{name}" id="name" autofocus="autofocus" placeholder="Name">
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
+        <div class="form-group form-item">
+            <label for="serialNumber">Serial Number:</label>
+            <input type="text" id="serialNumber" th:field="*{serialNumber}" placeholder="Serial Number">
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('serialNumber')}" th:errors="*{serialNumber}">ERROR</p>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <input type="submit" name="login-submit" id="login-submit" value="Add">
+                </div>
+            </div>
+        </div>
+    </form>
+    <h4 class="text-center"><a th:href="@{/upses/list-examples}">UPS Examples List</a></h4>
+</div>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package org.brainacademy.controller;
+package org.brainacademy.controller.users;
 
 import org.brainacademy.controller.form.UserForm;
 import org.brainacademy.controller.validation.UserValidator;

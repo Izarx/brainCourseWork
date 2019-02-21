@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>UPS List</title>
+    <title>Spare Parts List</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
 </head>
 <body>
-<h1>UPS Models List</h1>
-<a th:href="@{/upses/add-model}">Add New Model of UPS</a>
+<h1>Spare Parts Models List</h1>
+<a th:href="@{/spares/add-model}">Add New Model of Spare Part</a>
 <br/><br/>
 <div>
     <table border="1">
@@ -17,11 +17,11 @@
             <th>Price</th>
             <th>Type</th>
         </tr>
-        <tr th:each ="ups : ${upses}">
-            <td th:utext="${ups.id}">...</td>
-            <td th:utext="${ups.name}">...</td>
-            <td th:utext="${ups.price}">...</td>
-            <td th:utext="${ups.type}">...</td>
+        <tr th:each ="spare : ${spareParts}">
+            <td th:utext="${spare.id}">...</td>
+            <td th:utext="${spare.name}">...</td>
+            <td th:utext="${spare.price}">...</td>
+            <td th:utext="${spare.type}">...</td>
         </tr>
     </table>
 </div>

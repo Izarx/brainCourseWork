@@ -15,7 +15,8 @@ public abstract class ModelOfEquipment extends ProjectEntity {
     //FIELDS
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "upsproject.models_seq")
+    @SequenceGenerator(name = "upsproject.models_seq", sequenceName = "upsproject.models_seq", allocationSize = 1)
     private Long id;
 
     private String name;
@@ -23,6 +24,8 @@ public abstract class ModelOfEquipment extends ProjectEntity {
     private Double price;
 
     //GETTERS & SETTERS
+
+    public Long getId() { return id; }
 
     public String getName() {
         return name;

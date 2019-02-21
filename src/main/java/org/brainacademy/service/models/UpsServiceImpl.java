@@ -29,7 +29,7 @@ public class UpsServiceImpl implements UpsService {
     }
 
     @Override
-    public Ups save(Ups ups) throws ClassCastException {
+    public Ups save(Ups ups) {
         return upsRepository.save(ups);
     }
 }

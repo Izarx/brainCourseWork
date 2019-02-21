@@ -1,8 +1,5 @@
 package org.brainacademy.model.models;
 
-import org.brainacademy.model.api.Cabinet;
-import org.brainacademy.model.api.Removable;
-
 import javax.persistence.*;
 
 /**
@@ -15,7 +12,6 @@ public class Ups extends ModelOfEquipment {
 
     //FIELDS
 
-    @Column
     @Enumerated(EnumType.STRING)
     private UpsTypes type;
 

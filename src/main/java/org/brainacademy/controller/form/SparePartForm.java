@@ -1,8 +1,8 @@
 package org.brainacademy.controller.form;
 
-import org.brainacademy.model.models.UpsTypes;
+import org.brainacademy.model.models.SparePartTypes;
 
-public class UpsForm {
+public class SparePartForm {
 
     private String name;
     private Double price;
@@ -24,7 +24,9 @@ public class UpsForm {
         this.price = price;
     }
 
-    public String getType() { return type; }
+    public String getType() {
+        return type;
+    }
 
     public void setType(String type) {
         this.type = type;

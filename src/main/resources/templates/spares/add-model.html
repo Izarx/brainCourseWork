@@ -3,12 +3,12 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-    <title>Add new Model of UPS</title>
+    <title>Add new Model of Spare Part</title>
 </head>
 <body>
 <div class="container">
-    <form th:action="@{/upses/add-model}"
-          th:object="${upsForm}"
+    <form th:action="@{/spares/add-model}"
+          th:object="${sparePartForm}"
           method="post">
 
         <div class="form-group form-item">
@@ -24,8 +24,8 @@
         <p class="error-label" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">ERROR</p>
 
         <div class="form-group form-item">
-            <label for="type">Type:</label>
-            <input type="text" th:field="*{type}" id="type" autofocus="autofocus" placeholder="Type">
+            <label for="type">Price:</label>
+            <input type="text" id="type" th:field="*{type}" placeholder="Type">
         </div>
         <p class="error-label" th:if="${#fields.hasErrors('type')}" th:errors="*{type}">ERROR</p>
 
@@ -37,7 +37,7 @@
             </div>
         </div>
     </form>
-    <h4 class="text-center"><a th:href="@{/upses/list-models}">UPS Models List</a></h4>
+    <h4 class="text-center"><a th:href="@{/spares/list-models}">Spare Parts Models List</a></h4>
 </div>
 </body>
 </html>

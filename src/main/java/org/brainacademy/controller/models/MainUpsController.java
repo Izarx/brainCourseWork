@@ -2,6 +2,7 @@ package org.brainacademy.controller.models;
 
 import org.brainacademy.controller.form.UpsForm;
 import org.brainacademy.model.models.Ups;
+import org.brainacademy.model.models.UpsTypes;
 import org.brainacademy.service.models.UpsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +20,7 @@ public class MainUpsController {
     @Autowired
     UpsService upsService;
 
-    @Value("${errorUps.message}")
+    @Value("${errorModel.message}")
     private String errorMessage;
 
     @GetMapping(value = { "/list-models" })
@@ -40,11 +41,13 @@ public class MainUpsController {
 
         String name = upsForm.getName();
         Double price = upsForm.getPrice();
+        String type = upsForm.getType().toUpperCase();
 
         if (name != null && !name.isEmpty() && price != null) {
             Ups newUps = new Ups();
             newUps.setName(name);
             newUps.setPrice(price);
+            newUps.setType(UpsTypes.valueOf(type));
             upsService.save(newUps);
 
             return "redirect:/upses/list-models";

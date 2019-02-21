@@ -13,9 +13,8 @@ public class SparePart extends ModelOfEquipment {
 
     //FIELDS
 
-    @Column
     @Enumerated(EnumType.STRING)
-    private SparePartsTypes type;
+    private SparePartTypes type;
 
     //CONSTRUCTOR
 
@@ -23,11 +22,11 @@ public class SparePart extends ModelOfEquipment {
 
     //SETTERS & GETTERS
 
-    public SparePartsTypes getType() {
+    public SparePartTypes getType() {
         return type;
     }
 
-    public void setType(SparePartsTypes type) {
+    public void setType(SparePartTypes type) {
         this.type = type;
     }
 }

@@ -13,10 +13,37 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Implementation extends ProjectEntity implements Removable {
 
+    //FIELDS
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
+    @Column(name = "serial_number")
+    private String serialNumber;
 
+    @Column(name = "is_broken")
+    private Boolean isBroken;
 
+    //GETTERS & SETTERS
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getSerialNumber() {
+        return serialNumber;
+    }
+
+    public void setSerialNumber(String serialNumber) {
+        this.serialNumber = serialNumber;
+    }
+
+    public Boolean getBroken() {
+        return isBroken;
+    }
+
+    public void setBroken(Boolean broken) {
+        isBroken = broken;
+    }
 }

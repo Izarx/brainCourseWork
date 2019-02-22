@@ -19,16 +19,7 @@ public class UpsImpl extends Implementation implements Cabinet {
 
     //FIELDS
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column
-    private Long id;
-
-    @Column
     private String name;
-
-    @Column(name = "serial_number")
-    private String serialNumber;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_model", nullable = false)
@@ -40,31 +31,13 @@ public class UpsImpl extends Implementation implements Cabinet {
     @JsonIgnore
     private Enterprise enterprise;
 
-    @Column(name = "is_broken")
     private Boolean isBroken;
 
     //CONSTRUCTORS
 
     public UpsImpl() {}
 
-    public UpsImpl(String name, String serialNumber, Ups ups, Enterprise enterprise) {
-        this.name = name;
-        this.serialNumber = serialNumber;
-        this.ups = ups;
-        this.enterprise = enterprise;
-        this.isBroken = false;
-    }
-
     //SETTERS & GETTERS
-
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -72,14 +45,6 @@ public class UpsImpl extends Implementation implements Cabinet {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(String serialNumber) {
-        this.serialNumber = serialNumber;
     }
 
     public Ups getUps() {

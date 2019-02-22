@@ -24,10 +24,12 @@
         <p class="error-label" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">ERROR</p>
 
         <div class="form-group form-item">
-            <label for="type">Price:</label>
-            <input type="text" id="type" th:field="*{type}" placeholder="Type">
+            <label for="type">Type:</label>
+            <select class="form-control" id="type" th:field="*{type}" placeholder="Type">
+                <option value="0">Select type of Spare Part</option>
+                <option th:each="sparePartType : ${sparePartTypes}" th:value="${sparePartType}" th:text="${sparePartType}"></option>
+            </select>
         </div>
-        <p class="error-label" th:if="${#fields.hasErrors('type')}" th:errors="*{type}">ERROR</p>
 
         <div class="form-group">
             <div class="row">

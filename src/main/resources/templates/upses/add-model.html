@@ -25,9 +25,11 @@
 
         <div class="form-group form-item">
             <label for="type">Type:</label>
-            <input type="text" th:field="*{type}" id="type" autofocus="autofocus" placeholder="Type">
+            <select class="form-control" id="type" th:field="*{type}" placeholder="Type">
+                <option value="0">Select type of UPS</option>
+                <option th:each="upsType : ${upsTypes}" th:value="${upsType}" th:text="${upsType}"></option>
+            </select>
         </div>
-        <p class="error-label" th:if="${#fields.hasErrors('type')}" th:errors="*{type}">ERROR</p>
 
         <div class="form-group">
             <div class="row">

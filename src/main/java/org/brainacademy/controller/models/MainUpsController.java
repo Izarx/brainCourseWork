@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/upses")
 public class MainUpsController {
@@ -33,6 +36,7 @@ public class MainUpsController {
     public String showAddUpsPage(Model model){
         UpsForm upsForm = new UpsForm();
         model.addAttribute("upsForm", upsForm);
+        model.addAttribute("upsTypes", getUpsTypes());
         return "upses/add-model";
     }
 
@@ -41,7 +45,7 @@ public class MainUpsController {
 
         String name = upsForm.getName();
         Double price = upsForm.getPrice();
-        String type = upsForm.getType().toUpperCase();
+        String type = upsForm.getType();
 
         if (name != null && !name.isEmpty() && price != null) {
             Ups newUps = new Ups();
@@ -55,6 +59,14 @@ public class MainUpsController {
 
         model.addAttribute("errorMessage", errorMessage);
         return "upses/add-model";
+    }
+
+    private List<String> getUpsTypes(){
+        List<String> list = new ArrayList<>();
+        for (UpsTypes t : UpsTypes.values()) {
+            list.add(t.name());
+        }
+        return list;
     }
 
 }

@@ -20,7 +20,7 @@ public class SparePartServiceImpl implements SparePartService {
 
     @Override
     public List<SparePart> getByType(String type) {
-        return spareRepository.findByType(type);
+        return spareRepository.findByType(type.toUpperCase());
     }
 
     @Override

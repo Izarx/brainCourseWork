@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 @RequestMapping("/spares")
 public class MainSparePartController {
@@ -33,6 +36,7 @@ public class MainSparePartController {
     public String showAddSparesPage(Model model){
         SparePartForm sparePartForm = new SparePartForm();
         model.addAttribute("sparePartForm", sparePartForm);
+        model.addAttribute("sparePartTypes", getSparePartTypes());
         return "spares/add-model";
     }
 
@@ -56,4 +60,11 @@ public class MainSparePartController {
         return "spares/add-model";
     }
 
+    private List<String> getSparePartTypes(){
+        List<String> list = new ArrayList<>();
+        for (SparePartTypes t : SparePartTypes.values()) {
+            list.add(t.name());
+        }
+        return list;
+    }
 }

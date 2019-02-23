@@ -11,7 +11,7 @@ import javax.persistence.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Implementation extends ProjectEntity implements Removable {
+public abstract class EquipmentImplementation extends ProjectEntity implements Removable {
 
     //FIELDS
 

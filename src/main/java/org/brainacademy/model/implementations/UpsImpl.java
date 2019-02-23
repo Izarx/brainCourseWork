@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "upses_impl", schema = "upsproject")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class UpsImpl extends Implementation implements Cabinet {
+public class UpsImpl extends EquipmentImplementation implements Cabinet {
 
     //FIELDS
 
@@ -30,8 +30,6 @@ public class UpsImpl extends Implementation implements Cabinet {
     @JoinColumn(name = "id_enterprise", nullable = false)
     @JsonIgnore
     private Enterprise enterprise;
-
-    private Boolean isBroken;
 
     //CONSTRUCTORS
 
@@ -63,11 +61,4 @@ public class UpsImpl extends Implementation implements Cabinet {
         this.enterprise = enterprise;
     }
 
-    public Boolean getBroken() {
-        return isBroken;
-    }
-
-    public void setBroken(Boolean broken) {
-        isBroken = broken;
-    }
 }

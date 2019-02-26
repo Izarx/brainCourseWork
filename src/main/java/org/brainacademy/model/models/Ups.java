@@ -1,6 +1,9 @@
 package org.brainacademy.model.models;
 
+import org.brainacademy.model.implementations.UpsImpl;
+
 import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Class to create table of UPS models
@@ -14,6 +17,9 @@ public class Ups extends ModelOfEquipment {
 
     @Enumerated(EnumType.STRING)
     private UpsTypes type;
+
+    @OneToMany(mappedBy = "ups", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UpsImpl> upsSet;
 
     //CONSTRUCTOR
 
@@ -29,6 +35,11 @@ public class Ups extends ModelOfEquipment {
         this.type = type;
     }
 
+    public Set<UpsImpl> getUpsSet() {
+        return upsSet;
+    }
 
-
+    public void setUpsSet(Set<UpsImpl> upsSet) {
+        this.upsSet = upsSet;
+    }
 }

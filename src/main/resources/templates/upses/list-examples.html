@@ -15,11 +15,13 @@
             <th>ID</th>
             <th>Name</th>
             <th>Serial Number</th>
+            <th>Status</th>
         </tr>
         <tr th:each ="upsImpl : ${upsImples}">
             <td th:utext="${upsImpl.id}">...</td>
             <td th:utext="${upsImpl.name}">...</td>
             <td th:utext="${upsImpl.serialNumber}">...</td>
+            <td th:utext="${upsImpl.isBroken}">...</td>
         </tr>
     </table>
 </div>

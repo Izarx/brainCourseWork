@@ -20,7 +20,7 @@ public class NetworkCard extends EquipmentImplementation {
     @JsonIgnore
     private SparePart sparePart;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_ups", nullable = false)
     @JsonIgnore
     private UpsImpl ups;

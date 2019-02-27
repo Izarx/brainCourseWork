@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 @Table(name = "models", schema = "joined")
-public abstract class ModelOfEquipment extends ProjectEntity {
+public abstract class ModelEquipment extends ProjectEntity {
 
     //FIELDS
 
@@ -47,7 +47,7 @@ public abstract class ModelOfEquipment extends ProjectEntity {
 
     @Override
     public String toString() {
-        return "ModelOfEquipment{" +
+        return "ModelEquipment{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", price=" + price +

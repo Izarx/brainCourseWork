@@ -1,9 +1,6 @@
 package org.brainacademy.model.models;
 
-import org.brainacademy.model.implementations.UpsImpl;
-
 import javax.persistence.*;
-import java.util.Set;
 
 /**
  * Class to create table of UPS models
@@ -11,7 +8,7 @@ import java.util.Set;
 
 @Entity
 @Table (name = "upses", schema = "joined")
-public class Ups extends ModelOfEquipment {
+public class Ups extends ModelEquipment {
 
     //FIELDS
 

@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table (name = "spare_parts", schema = "joined")
-public class SparePart extends ModelOfEquipment {
+public class SparePart extends ModelEquipment {
 
     //FIELDS
 

@@ -15,12 +15,12 @@ public class Battery extends EquipmentImplementation {
 
     //FIELDS
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_model", nullable = false)
     @JsonIgnore
     private SparePart sparePart;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_ups", nullable = false)
     @JsonIgnore
     private UpsImpl ups;

@@ -21,12 +21,12 @@ public class UpsImpl extends EquipmentImplementation implements Cabinet {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_model", nullable = false)
     @JsonIgnore
     private Ups ups;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_enterprise", nullable = false)
     @JsonIgnore
     private Enterprise enterprise;

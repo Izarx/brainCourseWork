@@ -15,12 +15,12 @@ public class NetworkCard extends EquipmentImplementation {
 
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_model", nullable = false)
     @JsonIgnore
     private SparePart sparePart;
 
-    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_ups", nullable = false)
     @JsonIgnore
     private UpsImpl ups;

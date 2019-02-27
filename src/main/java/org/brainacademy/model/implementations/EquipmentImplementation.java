@@ -10,7 +10,8 @@ import javax.persistence.*;
  */
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "implementations", schema = "joined")
 public abstract class EquipmentImplementation extends ProjectEntity implements Removable {
 
     //FIELDS
@@ -23,7 +24,7 @@ public abstract class EquipmentImplementation extends ProjectEntity implements R
     private String serialNumber;
 
     @Column(name = "is_broken")
-    private Boolean isBroken;
+    private boolean isBroken;
 
     //GETTERS & SETTERS
 
@@ -39,11 +40,22 @@ public abstract class EquipmentImplementation extends ProjectEntity implements R
         this.serialNumber = serialNumber;
     }
 
-    public Boolean getBroken() {
+    public boolean getIsBroken() {
         return isBroken;
     }
 
-    public void setBroken(Boolean broken) {
+    public void setIsBroken(boolean broken) {
         isBroken = broken;
+    }
+
+    // OVERRIDING METHODS
+
+    @Override
+    public String toString() {
+        return "EquipmentImplementation{" +
+                "id=" + id +
+                ", serialNumber='" + serialNumber + '\'' +
+                ", isBroken=" + isBroken +
+                '}';
     }
 }

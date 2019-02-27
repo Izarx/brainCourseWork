@@ -9,14 +9,14 @@ import javax.persistence.*;
  */
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "models", schema = "joined")
 public abstract class ModelOfEquipment extends ProjectEntity {
 
     //FIELDS
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "upsproject.models_seq")
-    @SequenceGenerator(name = "upsproject.models_seq", sequenceName = "upsproject.models_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
     private String name;
@@ -42,6 +42,8 @@ public abstract class ModelOfEquipment extends ProjectEntity {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    // OVERRIDING METHODS
 
     @Override
     public String toString() {

@@ -14,7 +14,7 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/upses/api")
+@RequestMapping("/api/upses")
 public class UpsController {
 
     @Autowired

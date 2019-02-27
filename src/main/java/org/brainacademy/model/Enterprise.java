@@ -12,25 +12,23 @@ import java.util.Set;
  */
 
 @Entity
-@Table (name = "enterprises", schema = "upsproject")
+@Table (name = "enterprises", schema = "joined")
 public class Enterprise extends ProjectEntity implements Cabinet {
 
     //FIELDS
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "upsproject.enterprises_seq")
-    @SequenceGenerator(name = "upsproject.enterprises_seq", sequenceName = "upsproject.enterprises_seq", allocationSize = 1)
-    @Column
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @Column
     private String name;
 
-    @Column
     private String address;
 
+/*
     @OneToMany(mappedBy = "ups", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<UpsImpl> upsImpls;
+*/
 
     //GETTERS & SETTERS
 

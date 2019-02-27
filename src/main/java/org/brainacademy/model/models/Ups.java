@@ -10,7 +10,7 @@ import java.util.Set;
  */
 
 @Entity
-@Table (name = "upses", schema = "upsproject")
+@Table (name = "upses", schema = "joined")
 public class Ups extends ModelOfEquipment {
 
     //FIELDS
@@ -18,8 +18,8 @@ public class Ups extends ModelOfEquipment {
     @Enumerated(EnumType.STRING)
     private UpsTypes type;
 
-    @OneToMany(mappedBy = "ups", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<UpsImpl> upsSet;
+    /*@OneToMany(mappedBy = "ups", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<UpsImpl> upsImplSet;*/
 
     //CONSTRUCTOR
 
@@ -35,11 +35,11 @@ public class Ups extends ModelOfEquipment {
         this.type = type;
     }
 
-    public Set<UpsImpl> getUpsSet() {
-        return upsSet;
+    /*public Set<UpsImpl> getUpsSet() {
+        return upsImplSet;
     }
 
-    public void setUpsSet(Set<UpsImpl> upsSet) {
-        this.upsSet = upsSet;
-    }
+    public void setUpsSet(Set<UpsImpl> upsImplSet) {
+        this.upsImplSet = upsImplSet;
+    }*/
 }

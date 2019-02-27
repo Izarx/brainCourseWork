@@ -7,7 +7,7 @@ import org.brainacademy.model.models.SparePart;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "network_cards", schema = "upsproject")
+@Table(name = "network_cards", schema = "joined")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class NetworkCard extends EquipmentImplementation {
 

@@ -4,12 +4,12 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity // аннотация помечающая класс как персистентную сущность
-@Table(name = "users", schema = "upsproject") // укзание что данный класс соответствует таблице в БД
+@Table(name = "users", schema = "joined") // укзание что данный класс соответствует таблице в БД
 public class User {
 
     @Id // указание что это поле являеться ключем
     // Описание последовательности для генерации ID
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column // аннотация помечающая поле как колонку в таблице БД, название должно соответствовать
     private Long id;
 

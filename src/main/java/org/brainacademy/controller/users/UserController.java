@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @RestController // Помечаем класс как контроллер обрабатывающий REST запросы
-@RequestMapping("users/api")
+@RequestMapping("/api/users")
 public class UserController {
 
     // Иньектируем сервис для работы с пользователями

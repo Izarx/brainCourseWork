@@ -9,7 +9,7 @@ import java.util.Date;
 
 
 @Entity
-@Table(name = "batteries", schema = "upsproject")
+@Table(name = "batteries", schema = "joined")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Battery extends EquipmentImplementation {
 

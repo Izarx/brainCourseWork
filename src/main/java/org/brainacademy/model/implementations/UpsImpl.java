@@ -13,7 +13,7 @@ import javax.persistence.*;
  */
 
 @Entity
-@Table(name = "upses_impl", schema = "upsproject")
+@Table(name = "upses_impl", schema = "joined")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class UpsImpl extends EquipmentImplementation implements Cabinet {
 

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -17,6 +18,16 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     @Override
     public List<Enterprise> getList() {
         return enterpriseRepository.findAll();
+    }
+
+    @Override
+    public List<String> getEnterprises() {
+        return enterpriseRepository.findAll().stream().map(Enterprise::getName).collect(Collectors.toList());
+    }
+
+    @Override
+    public Enterprise getEnterpriseById(Long id) {
+        return enterpriseRepository.getOne(id);
     }
 
     @Override

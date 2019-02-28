@@ -10,11 +10,4 @@ import java.util.List;
 
 public interface SparePartService extends ModelEquipmentService{
 
-    List<SparePart> getList();
-
-    List<SparePart> getByType(String type);
-
-    SparePart getByName(String name);
-
-    SparePart save (SparePart part);
 }

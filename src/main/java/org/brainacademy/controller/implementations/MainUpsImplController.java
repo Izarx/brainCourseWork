@@ -2,6 +2,7 @@ package org.brainacademy.controller.implementations;
 
 import org.brainacademy.controller.form.UpsImplForm;
 import org.brainacademy.model.implementations.UpsImpl;
+import org.brainacademy.model.models.Ups;
 import org.brainacademy.service.EnterpriseService;
 import org.brainacademy.service.implementations.UpsImplService;
 import org.brainacademy.service.models.UpsService;
@@ -41,8 +42,8 @@ public class MainUpsImplController {
     public String showAddUpsImplPage(Model model) {
         UpsImplForm upsImplForm = new UpsImplForm();
         model.addAttribute("upsImplForm", upsImplForm);
-        model.addAttribute("upses", upsImplService.getUpses());
-        model.addAttribute("enterprises", upsImplService.getEnterprises());
+        model.addAttribute("upses", upsService.getListByName());
+        model.addAttribute("enterprises", enterpriseService.getEnterprises());
         return "upses/add-example";
     }
 
@@ -58,7 +59,7 @@ public class MainUpsImplController {
             UpsImpl newUpsImpl = new UpsImpl();
             newUpsImpl.setName(name);
             newUpsImpl.setSerialNumber(serialNumber);
-            newUpsImpl.setUps(upsService.getByName(upsModel));
+            newUpsImpl.setUps((Ups) upsService.getByName(upsModel));
             newUpsImpl.setEnterprise(enterpriseService.getByName(enterprise));
             newUpsImpl.setIsBroken(false);
             upsImplService.save(newUpsImpl);

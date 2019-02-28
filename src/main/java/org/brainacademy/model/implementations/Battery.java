@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.brainacademy.model.models.SparePart;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -30,8 +31,8 @@ public class Battery extends EquipmentImplementation {
     private UpsImpl ups;
 
     @Column(name = "date_factory")
-    @Temporal(TemporalType.DATE)
-    private Date dateFactory;
+    // @Temporal(TemporalType.DATE)
+    private LocalDate dateFactory;
 
     //CONSTRUCTOR
 
@@ -55,11 +56,11 @@ public class Battery extends EquipmentImplementation {
         this.ups = ups;
     }
 
-    public Date getDateFactory() {
+    public LocalDate getDateFactory() {
         return dateFactory;
     }
 
-    public void setDateFactory(Date dateFactory) {
+    public void setDateFactory(LocalDate dateFactory) {
         this.dateFactory = dateFactory;
     }
 }

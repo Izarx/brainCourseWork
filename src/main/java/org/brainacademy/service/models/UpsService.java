@@ -10,12 +10,4 @@ import java.util.List;
 
 public interface UpsService extends ModelEquipmentService {
 
-    List<Ups> getList();
-
-    List<Ups> getByType(String type);
-
-    Ups getByName(String name);
-
-    Ups save(Ups model);
-
 }

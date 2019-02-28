@@ -1,6 +1,6 @@
 package org.brainacademy.controller.models;
 
-import org.brainacademy.controller.form.UpsForm;
+import org.brainacademy.controller.form.ModelEquipmentForm;
 import org.brainacademy.model.models.Ups;
 import org.brainacademy.model.models.UpsTypes;
 import org.brainacademy.service.models.UpsService;
@@ -34,14 +34,14 @@ public class MainUpsController {
 
     @GetMapping(value = { "/add-model" })
     public String showAddUpsPage(Model model){
-        UpsForm upsForm = new UpsForm();
+        ModelEquipmentForm upsForm = new ModelEquipmentForm();
         model.addAttribute("upsForm", upsForm);
         model.addAttribute("upsTypes", getUpsTypes());
         return "upses/add-model";
     }
 
     @PostMapping(value = {"/add-model"})
-    public String saveUps(Model model, @ModelAttribute ("upsForm") UpsForm upsForm) {
+    public String saveUps(Model model, @ModelAttribute ("upsForm") ModelEquipmentForm upsForm) {
 
         String name = upsForm.getName();
         Double price = upsForm.getPrice();

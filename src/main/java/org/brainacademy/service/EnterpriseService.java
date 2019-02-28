@@ -14,6 +14,10 @@ public interface EnterpriseService {
 
     List<Enterprise> getList();
 
+    List<String> getEnterprises();
+
+    public Enterprise getEnterpriseById(Long id);
+
     Enterprise getByName(String name);
 
     Enterprise save(Enterprise enterprise);

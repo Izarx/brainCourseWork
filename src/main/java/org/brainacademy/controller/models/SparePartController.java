@@ -1,6 +1,7 @@
 package org.brainacademy.controller.models;
 
 
+import org.brainacademy.model.models.ModelEquipment;
 import org.brainacademy.model.models.SparePart;
 import org.brainacademy.service.models.SparePartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,9 +19,9 @@ public class SparePartController {
     SparePartService sparePartService;
 
     @GetMapping(value = "/list-models")
-    public ResponseEntity<List<SparePart>> sparePartDetail() {
-        List<SparePart> sparePartDetail = sparePartService.getList();
-        return new ResponseEntity<List<SparePart>>(sparePartDetail, HttpStatus.OK);
+    public ResponseEntity<List<ModelEquipment>> sparePartDetail() {
+        List<ModelEquipment> sparePartDetail = sparePartService.getList();
+        return new ResponseEntity<List<ModelEquipment>>(sparePartDetail, HttpStatus.OK);
     }
 
     @PostMapping(value = "/add-model")

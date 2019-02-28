@@ -1,5 +1,6 @@
 package org.brainacademy.controller.models;
 
+import org.brainacademy.model.models.ModelEquipment;
 import org.brainacademy.model.models.Ups;
 import org.brainacademy.service.models.UpsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,9 @@ public class UpsController {
     private UpsService upsService;
 
     @GetMapping(value = "/list-models")
-    public ResponseEntity<List<Ups>> upsDetails(){
-        List<Ups> upsDetails = upsService.getList();
-        return new ResponseEntity<List<Ups>>(upsDetails, HttpStatus.OK);
+    public ResponseEntity<List<ModelEquipment>> upsDetails(){
+        List<ModelEquipment> upsDetails = upsService.getList();
+        return new ResponseEntity<List<ModelEquipment>>(upsDetails, HttpStatus.OK);
     }
 
     @PostMapping(value = "/add-model")

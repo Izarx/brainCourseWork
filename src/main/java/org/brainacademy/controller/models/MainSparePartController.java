@@ -1,6 +1,6 @@
 package org.brainacademy.controller.models;
 
-import org.brainacademy.controller.form.SparePartForm;
+import org.brainacademy.controller.form.ModelEquipmentForm;
 import org.brainacademy.model.models.SparePart;
 import org.brainacademy.model.models.SparePartTypes;
 import org.brainacademy.service.models.SparePartService;
@@ -34,17 +34,17 @@ public class MainSparePartController {
 
     @GetMapping(value = "/add-model")
     public String showAddSparesPage(Model model){
-        SparePartForm sparePartForm = new SparePartForm();
-        model.addAttribute("sparePartForm", sparePartForm);
+        ModelEquipmentForm modelEquipmentForm = new ModelEquipmentForm();
+        model.addAttribute("modelEquipmentForm", modelEquipmentForm);
         model.addAttribute("sparePartTypes", getSparePartTypes());
         return "spares/add-model";
     }
 
     @PostMapping(value = "/add-model")
-    public String saveSparePart(Model model, @ModelAttribute ("sparePartForm")SparePartForm sparePartForm) {
-        String name = sparePartForm.getName();
-        Double price = sparePartForm.getPrice();
-        String type = sparePartForm.getType().toUpperCase();
+    public String saveSparePart(Model model, @ModelAttribute ("modelEquipmentForm") ModelEquipmentForm modelEquipmentForm) {
+        String name = modelEquipmentForm.getName();
+        Double price = modelEquipmentForm.getPrice();
+        String type = modelEquipmentForm.getType().toUpperCase();
 
         if (name != null && !name.isEmpty() && price != null) {
             SparePart sparePart = new SparePart();

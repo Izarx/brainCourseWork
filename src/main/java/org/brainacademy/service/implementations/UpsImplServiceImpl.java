@@ -1,12 +1,8 @@
 package org.brainacademy.service.implementations;
 
-import org.brainacademy.dao.EnterpriseRepository;
 import org.brainacademy.dao.UpsImplRepository;
-import org.brainacademy.dao.UpsRepository;
-import org.brainacademy.model.Enterprise;
 import org.brainacademy.model.implementations.EquipmentImplementation;
 import org.brainacademy.model.implementations.UpsImpl;
-import org.brainacademy.model.models.Ups;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,12 +14,6 @@ public class UpsImplServiceImpl implements UpsImplService{
 
     @Autowired
     UpsImplRepository upsImplRepository;
-
-    @Autowired
-    UpsRepository upsRepository;
-
-    @Autowired
-    EnterpriseRepository enterpriseRepository;
 
     @Override
     public List<EquipmentImplementation> getList() {
@@ -49,21 +39,5 @@ public class UpsImplServiceImpl implements UpsImplService{
     public EquipmentImplementation save(EquipmentImplementation equipmentImplementation) {
         return upsImplRepository.save((UpsImpl) equipmentImplementation);
     }
-
-    @Override
-    public Enterprise getEnterpriseById(Long id) {
-        return enterpriseRepository.getOne(id);
-    }
-
-    @Override
-    public List<String> getUpses() {
-        return upsRepository.findAll().stream().map(Ups::getName).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<String> getEnterprises() {
-        return enterpriseRepository.findAll().stream().map(Enterprise::getName).collect(Collectors.toList());
-    }
-
 
 }

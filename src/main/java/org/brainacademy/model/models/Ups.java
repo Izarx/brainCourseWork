@@ -4,6 +4,7 @@ import javax.persistence.*;
 
 /**
  * Class to create table of UPS models
+ * @author Ihor Zakharko
  */
 
 @Entity

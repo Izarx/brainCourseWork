@@ -7,7 +7,9 @@ import javax.persistence.*;
 
 /**
  * Abstract class produce implementation of equipment
+ * @author Ihor Zakharko
  */
+
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)

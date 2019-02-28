@@ -5,6 +5,7 @@ import javax.persistence.*;
 
 /**
  * Class for create table of spare part models and types
+ * @author Ihor Zakharko
  */
 
 @Entity

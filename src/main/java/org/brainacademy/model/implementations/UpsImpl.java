@@ -10,6 +10,7 @@ import javax.persistence.*;
 
 /**
  * Class for create example of UPS which has some model, get one from upses
+ * @author Ihor Zakharko
  */
 
 @Entity

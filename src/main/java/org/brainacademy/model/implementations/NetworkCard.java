@@ -3,8 +3,12 @@ package org.brainacademy.model.implementations;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.brainacademy.model.models.SparePart;
-
 import javax.persistence.*;
+
+/**
+ * Class to create table with examples of Network cards
+ * @author Ihor Zakharko
+ */
 
 @Entity
 @Table(name = "network_cards", schema = "joined")

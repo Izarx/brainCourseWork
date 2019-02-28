@@ -15,5 +15,5 @@ public interface UpsImplRepository extends JpaRepository<UpsImpl, Long> {
 
     UpsImpl findBySerialNumber (String serialNumber);
 
-    List<UpsImpl> findByIsBroken (Boolean isBroken);
+    List<UpsImpl> findByIsBroken (boolean isBroken);
 }

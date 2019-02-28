@@ -1,5 +1,6 @@
 package org.brainacademy.controller.implementations;
 
+import org.brainacademy.model.implementations.EquipmentImplementation;
 import org.brainacademy.model.implementations.UpsImpl;
 import org.brainacademy.service.implementations.UpsImplService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,9 +22,9 @@ public class UpsImplController {
     private UpsImplService upsImplService;
 
     @GetMapping(value = { "/list-examples" })
-    public ResponseEntity<List<UpsImpl>> upsImplDetails(){
-        List<UpsImpl> upsImplDetails = upsImplService.getList();
-        return new ResponseEntity<List<UpsImpl>>(upsImplDetails, HttpStatus.OK);
+    public ResponseEntity<List<EquipmentImplementation>> upsImplDetails(){
+        List<EquipmentImplementation> upsImplDetails = upsImplService.getList();
+        return new ResponseEntity<List<EquipmentImplementation>>(upsImplDetails, HttpStatus.OK);
     }
 
     @PostMapping(value = { "/add-example" })

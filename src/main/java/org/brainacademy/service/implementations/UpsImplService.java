@@ -10,24 +10,14 @@ import java.util.List;
  * Interface to cooperate with repository UpsImplRepository
  */
 
-public interface UpsImplService {
-
-    List<UpsImpl> getList();
+public interface UpsImplService extends ImplementationService{
 
     UpsImpl getByName(String name);
-
-    UpsImpl getBySerialNumber(String serialNumber);
-
-    List<UpsImpl> getByIsBroken(Boolean isBroken);
-
-    Ups getUpsById(Long id);
 
     Enterprise getEnterpriseById(Long id);
 
     List<String> getUpses();
 
     List<String> getEnterprises();
-
-    UpsImpl save(UpsImpl upsImpl);
 
 }

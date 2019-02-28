@@ -8,7 +8,7 @@ import java.util.List;
  * Interface to cooperate with repository of UPSes
  */
 
-public interface UpsService {
+public interface UpsService extends ModelEquipmentService {
 
     List<Ups> getList();
 

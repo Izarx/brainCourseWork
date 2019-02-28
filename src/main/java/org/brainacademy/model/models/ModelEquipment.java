@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 /**
  * Abstract class for models of equipment (UPS, Battery, Network Card, etc.)
+ * @author Ihor Zakharko
  */
 
 @Entity

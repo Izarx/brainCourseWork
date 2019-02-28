@@ -1,4 +1,7 @@
 package org.brainacademy.model;
 
-public abstract class ProjectEntity {
+import java.io.Serializable;
+
+public abstract class ProjectEntity implements Serializable {
+    long serialVersionUID = 1L;
 }

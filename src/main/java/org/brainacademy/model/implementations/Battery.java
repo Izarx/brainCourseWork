@@ -7,6 +7,10 @@ import org.brainacademy.model.models.SparePart;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Class to create table with examples of batteries
+ * @author Ihor Zakharko
+ */
 
 @Entity
 @Table(name = "batteries", schema = "joined")

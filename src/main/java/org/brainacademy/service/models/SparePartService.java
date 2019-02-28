@@ -8,7 +8,7 @@ import java.util.List;
  * Interface to cooperate with repository of Spare Parts
  */
 
-public interface SparePartService {
+public interface SparePartService extends ModelEquipmentService{
 
     List<SparePart> getList();
 

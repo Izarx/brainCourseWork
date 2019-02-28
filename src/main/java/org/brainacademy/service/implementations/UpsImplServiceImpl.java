@@ -4,16 +4,17 @@ import org.brainacademy.dao.EnterpriseRepository;
 import org.brainacademy.dao.UpsImplRepository;
 import org.brainacademy.dao.UpsRepository;
 import org.brainacademy.model.Enterprise;
+import org.brainacademy.model.implementations.EquipmentImplementation;
 import org.brainacademy.model.implementations.UpsImpl;
 import org.brainacademy.model.models.Ups;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
-public class UpsImplServiceImpl implements UpsImplService {
+public class UpsImplServiceImpl implements UpsImplService{
 
     @Autowired
     UpsImplRepository upsImplRepository;
@@ -25,8 +26,8 @@ public class UpsImplServiceImpl implements UpsImplService {
     EnterpriseRepository enterpriseRepository;
 
     @Override
-    public List<UpsImpl> getList() {
-        return upsImplRepository.findAll();
+    public List<EquipmentImplementation> getList() {
+        return upsImplRepository.findAll().stream().filter(s -> s instanceof UpsImpl).collect(Collectors.toList());
     }
 
     @Override
@@ -40,13 +41,13 @@ public class UpsImplServiceImpl implements UpsImplService {
     }
 
     @Override
-    public List<UpsImpl> getByIsBroken(Boolean isBroken) {
-        return upsImplRepository.findByIsBroken(isBroken);
+    public List<EquipmentImplementation> getListByIsBroken(boolean isBroken) {
+        return null;
     }
 
     @Override
-    public Ups getUpsById(Long id) {
-        return upsRepository.getOne(id);
+    public EquipmentImplementation save(EquipmentImplementation equipmentImplementation) {
+        return upsImplRepository.save((UpsImpl) equipmentImplementation);
     }
 
     @Override
@@ -56,24 +57,13 @@ public class UpsImplServiceImpl implements UpsImplService {
 
     @Override
     public List<String> getUpses() {
-        List<String> list = new ArrayList<>();
-        for (Ups ups: upsRepository.findAll()){
-            list.add(ups.getName());
-        }
-        return list;
+        return upsRepository.findAll().stream().map(Ups::getName).collect(Collectors.toList());
     }
 
     @Override
     public List<String> getEnterprises() {
-        List<String> list = new ArrayList<>();
-        for (Enterprise enterprise: enterpriseRepository.findAll()){
-            list.add(enterprise.getName());
-        }
-        return list;
+        return enterpriseRepository.findAll().stream().map(Enterprise::getName).collect(Collectors.toList());
     }
 
-    @Override
-    public UpsImpl save(UpsImpl upsImpl) {
-        return upsImplRepository.save(upsImpl);
-    }
+
 }

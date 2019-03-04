@@ -43,19 +43,23 @@
         </ul>
     </div>
 </nav>
-
+<br/><br/>
 <a th:href="@{/users/registration}">Registration</a>
 <br/><br/>
-<div>
-    <table border="1">
+<div class="container">
+    <table class="table table-striped">
+        <thead>
         <tr>
             <th>Login</th>
             <th>Password</th>
         </tr>
+        </thead>
+        <tbody>
         <tr th:each ="user : ${users}">
             <td th:utext="${user.email}">...</td>
             <td th:utext="${user.password}">...</td>
         </tr>
+        </tbody>
     </table>
 </div>
 </body>

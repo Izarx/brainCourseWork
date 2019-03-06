@@ -1,7 +1,6 @@
 package org.brainacademy.service.models;
 
 import org.brainacademy.dao.SpareRepository;
-import org.brainacademy.model.models.ModelEquipment;
 import org.brainacademy.model.models.SparePart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +15,8 @@ public class SparePartServiceImpl implements SparePartService {
     SpareRepository spareRepository;
 
     @Override
-    public List<ModelEquipment> getList() {
-        return spareRepository.findAll().stream().filter(s -> s instanceof SparePart).collect(Collectors.toList());
+    public List<SparePart> getList() {
+        return spareRepository.findAll();
     }
 
     @Override
@@ -31,14 +30,14 @@ public class SparePartServiceImpl implements SparePartService {
     }
 
     @Override
-    public ModelEquipment getById(final Long id)
+    public SparePart getById(final Long id)
     {
         return spareRepository.findById(id).orElse(null);
     }
 
     @Override
-    public ModelEquipment save(ModelEquipment part) {
-        return spareRepository.save((SparePart) part);
+    public SparePart save(SparePart part) {
+        return spareRepository.save(part);
     }
 
     @Override

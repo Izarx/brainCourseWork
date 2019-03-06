@@ -1,7 +1,6 @@
 package org.brainacademy.service.models;
 
 import org.brainacademy.dao.UpsRepository;
-import org.brainacademy.model.models.ModelEquipment;
 import org.brainacademy.model.models.Ups;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +15,8 @@ public class UpsServiceImpl implements UpsService {
     UpsRepository upsRepository;
 
     @Override
-    public List<ModelEquipment> getList() {
-        return upsRepository.findAll().stream().filter(s -> s instanceof Ups).collect(Collectors.toList());
+    public List<Ups> getList() {
+        return upsRepository.findAll();
     }
 
     @Override
@@ -31,14 +30,14 @@ public class UpsServiceImpl implements UpsService {
     }
 
     @Override
-    public ModelEquipment getById(final Long id)
+    public Ups getById(final Long id)
     {
         return upsRepository.findById(id).orElse(null);
     }
 
     @Override
-    public ModelEquipment save(ModelEquipment modelEquipment) {
-        return upsRepository.save( (Ups) modelEquipment);
+    public Ups save(Ups modelEquipment) {
+        return upsRepository.save(modelEquipment);
     }
 
     @Override

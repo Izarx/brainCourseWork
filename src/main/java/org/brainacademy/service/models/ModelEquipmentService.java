@@ -4,17 +4,17 @@ import org.brainacademy.model.models.ModelEquipment;
 
 import java.util.List;
 
-public interface ModelEquipmentService {
+public interface ModelEquipmentService<T extends ModelEquipment> {
 
-    List<ModelEquipment> getList();
+    List<T> getList();
 
     List<String> getListByName();
 
-    ModelEquipment getByName(String name);
+    T getByName(String name);
 
-    ModelEquipment getById(Long id);
+    T getById(Long id);
 
-    ModelEquipment save (ModelEquipment modelEquipment);
+    T save (T modelEquipment);
 
     void deleteById(Long id);
 }

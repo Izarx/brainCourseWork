@@ -1,13 +1,11 @@
 package org.brainacademy.service.implementations;
 
 import org.brainacademy.dao.UpsImplRepository;
-import org.brainacademy.model.implementations.EquipmentImplementation;
 import org.brainacademy.model.implementations.UpsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Implementation of UPS Implementation Service interface to work with repository of UPS Implementations
@@ -20,8 +18,8 @@ public class UpsImplServiceImpl implements UpsImplService{
     UpsImplRepository upsImplRepository;
 
     @Override
-    public List<EquipmentImplementation> getList() {
-        return upsImplRepository.findAll().stream().filter(s -> s instanceof UpsImpl).collect(Collectors.toList());
+    public List<UpsImpl> getList() {
+        return upsImplRepository.findAll();
     }
 
     @Override
@@ -45,13 +43,13 @@ public class UpsImplServiceImpl implements UpsImplService{
     }
 
     @Override
-    public List<EquipmentImplementation> getListByIsBroken(boolean isBroken) {
+    public List<UpsImpl> getListByIsBroken(boolean isBroken) {
         return null;
     }
 
     @Override
-    public EquipmentImplementation save(EquipmentImplementation equipmentImplementation) {
-        return upsImplRepository.save((UpsImpl) equipmentImplementation);
+    public UpsImpl save(UpsImpl equipmentImplementation) {
+        return upsImplRepository.save(equipmentImplementation);
     }
 
 }

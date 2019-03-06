@@ -8,14 +8,18 @@ import java.util.List;
  * Interface to communicate with repository of Implementations
  */
 
-public interface ImplementationService {
+public interface ImplementationService<T extends EquipmentImplementation> {
 
-    List<EquipmentImplementation> getList();
+    T getById(Long id);
 
-    EquipmentImplementation getBySerialNumber(String serialNumber);
+    List<T> getList();
 
-    List<EquipmentImplementation> getListByIsBroken(boolean isBroken);
+    T getBySerialNumber(String serialNumber);
 
-    EquipmentImplementation save(EquipmentImplementation equipmentImplementation);
+    List<T> getListByIsBroken(boolean isBroken);
+
+    T save(T equipmentImplementation);
+
+    void deleteById(Long id);
 
 }

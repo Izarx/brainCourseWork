@@ -8,6 +8,10 @@ import org.brainacademy.model.implementations.UpsImpl;
 
 public interface UpsImplService extends ImplementationService{
 
+    UpsImpl getById(Long id);
+
     UpsImpl getByName(String name);
+
+    void deleteById(Long id);
 
 }

@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Implementation of Enterprise Service interface to work with repository of Enterprises
+ */
 
 @Service
 public class EnterpriseServiceImpl implements EnterpriseService {

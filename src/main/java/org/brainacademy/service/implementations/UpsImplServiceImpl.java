@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Implementation of UPS Implementation Service interface to work with repository of UPS Implementations
+ */
+
 @Service
 public class UpsImplServiceImpl implements UpsImplService{
 
@@ -21,8 +25,18 @@ public class UpsImplServiceImpl implements UpsImplService{
     }
 
     @Override
+    public UpsImpl getById(Long id) {
+        return upsImplRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public UpsImpl getByName(String name) {
         return upsImplRepository.findByName(name);
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        upsImplRepository.deleteById(id);
     }
 
     @Override

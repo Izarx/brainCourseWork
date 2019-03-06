@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Add new Example of UPS</title>
+    <title>Update Example of UPS</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>Add New UPS Example</h1>
+    <h1>Update UPS Example</h1>
 </div>
 
 </div>
@@ -47,40 +47,40 @@
 <br/><br/>
 
 <div class="container">
-    <form th:action="@{/upses/add-example}"
+    <form th:action="@{'/upses/edit-example?id=' + ${upsImpl.id}}"
           th:object="${upsImplForm}"
-          method="post">
-        <div class="form-group form-item">
-            <label for="name">Name:</label>
-            <input type="text" th:field="*{name}" id="name" autofocus="autofocus" placeholder="Name">
-        </div>
-        <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
-        <div class="form-group form-item">
-            <label for="serialNumber">Serial Number:</label>
-            <input type="text" id="serialNumber" th:field="*{serialNumber}" placeholder="Serial Number">
-        </div>
-        <p class="error-label" th:if="${#fields.hasErrors('serialNumber')}" th:errors="*{serialNumber}">ERROR</p>
+          th:method="put">
 
         <div class="form-group form-item">
-            <label for="model">UPS Model:</label>
-            <select class="form-control" id="model" th:field="*{model}" placeholder="Model">
-                <option value="0">Select model of UPS</option>
-                <option th:each="ups : ${upses}" th:value="${ups}" th:text="${ups}"></option>
-            </select>
+            <label th:utext="${upsImpl.id}"></label>
         </div>
-        <p class="error-label" th:if="${#fields.hasErrors('model')}" th:errors="*{model}">ERROR</p>
+
+        <div class="form-group form-item">
+            <label for="name">Name:</label>
+            <input type="text" th:field="*{name}" id="name" autofocus="autofocus" th:placeholder="${upsImpl.name}">
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
+
         <div class="form-group form-item">
             <label for="enterprise">Enterprise:</label>
-            <select class="form-control" id="enterprise" th:field="*{enterprise}" placeholder="Enterprise">
-                <option value="0">Select Enterprise</option>
+            <select class="form-control" id="enterprise" th:field="*{enterprise}">
+                <option value="0" th:utext="${upsImpl.enterprise.name}"></option>
                 <option th:each="enterprise : ${enterprises}" th:value="${enterprise}" th:text="${enterprise}"></option>
             </select>
         </div>
         <p class="error-label" th:if="${#fields.hasErrors('enterprise')}" th:errors="*{enterprise}">ERROR</p>
+        <div class="form-group form-item">
+            <label for="isBroken">Broken:</label>
+            <select class="form-control" id="isBroken" th:field="*{isBroken}">
+                <option value="0" th:utext="${upsImpl.isBroken}">...</option>
+                <option value="1" th:utext="${!upsImpl.isBroken}">...</option>
+            </select>
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('isBroken')}" th:errors="*{isBroken}">ERROR</p>
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">
-                    <input type="submit" name="login-submit" id="login-submit" value="Add">
+                    <input type="submit" name="login-submit" id="login-submit" value="Update">
                 </div>
             </div>
         </div>

@@ -9,6 +9,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Implementation of User Service interface to work with repository of Users
+ */
+
 @Service // Помечаем класс как сервис (применяеться паттерн фасад).
 public class UserServiceImpl implements UserService {
 

@@ -56,6 +56,8 @@
             <th>Model</th>
             <th>Enterprise</th>
             <th>Status</th>
+            <th>Delete</th>
+            <th>Update</th>
         </tr>
         </thead>
         <tbody>
@@ -65,7 +67,9 @@
             <td th:utext="${upsImpl.serialNumber}">...</td>
             <td th:utext="${upsImpl.ups.name}">...</td>
             <td th:utext="${upsImpl.enterprise.name}">...</td>
-            <td th:utext="${upsImpl.isBroken}">...</td>
+            <td th:utext="${upsImpl.isBroken} ? 'broken' : 'in work'">...</td>
+            <td> <a th:href="@{'/upses/delete-example/' + ${upsImpl.id}}">Delete</a></td>
+            <td> <a th:href="@{'/upses/edit-example?id=' + ${upsImpl.id}}">Edit</a></td>
         </tr>
         </tbody>
     </table>

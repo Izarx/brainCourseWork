@@ -40,11 +40,11 @@ public class UpsImplForm {
         this.enterprise = enterprise;
     }
 
-    public Boolean getBroken() {
+    public Boolean getIsBroken() {
         return isBroken;
     }
 
-    public void setBroken(Boolean broken) {
+    public void setIsBroken(Boolean broken) {
         isBroken = broken;
     }
 }

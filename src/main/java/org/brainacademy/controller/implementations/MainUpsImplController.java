@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -40,8 +37,7 @@ public class MainUpsImplController {
 
     @GetMapping(value = {"/add-example"})
     public String showAddUpsImplPage(Model model) {
-        UpsImplForm upsImplForm = new UpsImplForm();
-        model.addAttribute("upsImplForm", upsImplForm);
+        model.addAttribute("upsImplForm", new UpsImplForm());
         model.addAttribute("upses", upsService.getListByName());
         model.addAttribute("enterprises", enterpriseService.getEnterprises());
         return "upses/add-example";
@@ -55,7 +51,8 @@ public class MainUpsImplController {
         String upsModel = upsImplForm.getModel();
         String enterprise = upsImplForm.getEnterprise();
 
-        if(name != null && !name.isEmpty() && serialNumber != null && !serialNumber.isEmpty() ){
+        if((name != null && !name.isEmpty()) && (serialNumber != null && !serialNumber.isEmpty()) &&
+                (upsModel != null && !upsModel.isEmpty()) && (enterprise != null && !enterprise.isEmpty())){
             UpsImpl newUpsImpl = new UpsImpl();
             newUpsImpl.setName(name);
             newUpsImpl.setSerialNumber(serialNumber);
@@ -68,5 +65,40 @@ public class MainUpsImplController {
 
         return "/add-example";
     }
+
+    @GetMapping(value = {"/edit-example"})
+    public String showUpdateUpsImplPage(Model model, @RequestParam("id") Long id) {
+        model.addAttribute("upsImplForm", new UpsImplForm());
+        model.addAttribute("upsImpl", upsImplService.getById(id));
+        model.addAttribute("enterprises", enterpriseService.getEnterprises());
+        return "upses/edit-example";
+    }
+
+    @RequestMapping(value = {"/edit-example"}, method = RequestMethod.PUT)
+    public String updateUpsImpl(@RequestParam("id") Long id, @ModelAttribute("upsImplForm") UpsImplForm upsImplForm){
+        UpsImpl updatedUpsImpl = upsImplService.getById(id);
+        String name = upsImplForm.getName();
+        String enterprise = upsImplForm.getEnterprise();
+        Boolean isBroken = upsImplForm.getIsBroken();
+        if (name != null && !name.isEmpty()){
+            updatedUpsImpl.setName(name);
+        }
+        if (enterprise != null && !enterprise.isEmpty()){
+            updatedUpsImpl.setEnterprise(enterpriseService.getByName(enterprise));
+        }
+        if (isBroken != null){
+            updatedUpsImpl.setIsBroken(isBroken);
+        }
+
+        upsImplService.save(updatedUpsImpl);
+        return "redirect:/upses/list-examples";
+    }
+
+    @RequestMapping("/delete-example/{id}")
+    public String deleteUpsImpl (@PathVariable("id") Long id){
+        upsImplService.deleteById(id);
+        return "redirect:/upses/list-examples";
+    }
+
 
 }

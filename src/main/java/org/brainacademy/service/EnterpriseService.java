@@ -20,5 +20,9 @@ public interface EnterpriseService {
 
     Enterprise getByName(String name);
 
+    Enterprise getById(Long id);
+
     Enterprise save(Enterprise enterprise);
+
+    void deleteById(Long id);
 }

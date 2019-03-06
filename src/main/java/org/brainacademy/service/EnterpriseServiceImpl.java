@@ -39,7 +39,19 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     @Override
+    public Enterprise getById(final Long id)
+    {
+        return enterpriseRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public Enterprise save(Enterprise enterprise) {
         return enterpriseRepository.save(enterprise);
+    }
+
+    @Override
+    public void deleteById(final Long id)
+    {
+        enterpriseRepository.deleteById(id);
     }
 }

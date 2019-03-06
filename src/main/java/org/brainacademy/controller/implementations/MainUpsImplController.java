@@ -12,6 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * Class controller to communicate with view HTML file and Repository.
+ * It is realisation of CRUD principles
+ */
 
 @Controller
 @RequestMapping("/upses")

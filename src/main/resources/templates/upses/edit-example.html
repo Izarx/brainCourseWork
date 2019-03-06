@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>Update UPS Example</h1>
+    <h1>Edit UPS Example</h1>
 </div>
 
 </div>
@@ -63,15 +63,15 @@
 
         <div class="form-group form-item">
             <label for="enterprise">Enterprise:</label>
-            <select class="form-control" id="enterprise" th:field="*{enterprise}">
-                <option value="0" th:utext="${upsImpl.enterprise.name}"></option>
+            <select class="form-control" id="enterprise" th:field="*{enterprise}" th:placeholder="${upsImpl.enterprise.name}">
+                <option value="0" th:utext="${upsImpl.enterprise.name}">...</option>
                 <option th:each="enterprise : ${enterprises}" th:value="${enterprise}" th:text="${enterprise}"></option>
             </select>
         </div>
         <p class="error-label" th:if="${#fields.hasErrors('enterprise')}" th:errors="*{enterprise}">ERROR</p>
         <div class="form-group form-item">
             <label for="isBroken">Broken:</label>
-            <select class="form-control" id="isBroken" th:field="*{isBroken}">
+            <select class="form-control" id="isBroken" th:field="*{isBroken}" th:placeholder="${upsImpl.isBroken}">
                 <option value="0" th:utext="${upsImpl.isBroken}">...</option>
                 <option value="1" th:utext="${!upsImpl.isBroken}">...</option>
             </select>

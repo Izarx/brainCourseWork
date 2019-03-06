@@ -54,6 +54,8 @@
             <th>ID</th>
             <th>Name</th>
             <th>Address</th>
+            <th>Delete</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -61,6 +63,8 @@
             <td th:utext="${enterprise.id}">...</td>
             <td th:utext="${enterprise.name}">...</td>
             <td th:utext="${enterprise.address}">...</td>
+            <td> <a th:href="@{'/enterprises/delete/' + ${enterprise.id}}">Delete</a></td>
+            <td> <a th:href="@{'/enterprises/edit?id=' + ${enterprise.id}}">Edit</a></td>
         </tr>
         </tbody>
     </table>

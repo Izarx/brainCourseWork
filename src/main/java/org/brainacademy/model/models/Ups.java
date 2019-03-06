@@ -16,9 +16,6 @@ public class Ups extends ModelEquipment {
     @Enumerated(EnumType.STRING)
     private UpsTypes type;
 
-    /*@OneToMany(mappedBy = "ups", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<UpsImpl> upsImplSet;*/
-
     //CONSTRUCTOR
 
     public Ups() {}
@@ -33,11 +30,4 @@ public class Ups extends ModelEquipment {
         this.type = type;
     }
 
-    /*public Set<UpsImpl> getUpsSet() {
-        return upsImplSet;
-    }
-
-    public void setUpsSet(Set<UpsImpl> upsImplSet) {
-        this.upsImplSet = upsImplSet;
-    }*/
 }

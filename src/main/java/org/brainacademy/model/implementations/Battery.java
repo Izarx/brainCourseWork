@@ -6,7 +6,6 @@ import org.brainacademy.model.models.SparePart;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
  * Class to create table with examples of batteries

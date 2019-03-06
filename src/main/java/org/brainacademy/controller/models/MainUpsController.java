@@ -1,8 +1,6 @@
 package org.brainacademy.controller.models;
 
-import org.brainacademy.controller.form.EnterpriseForm;
 import org.brainacademy.controller.form.ModelEquipmentForm;
-import org.brainacademy.model.Enterprise;
 import org.brainacademy.model.models.Ups;
 import org.brainacademy.model.models.UpsTypes;
 import org.brainacademy.service.models.UpsService;

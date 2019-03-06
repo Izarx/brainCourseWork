@@ -1,10 +1,8 @@
 package org.brainacademy.model;
 
 import org.brainacademy.model.api.Cabinet;
-import org.brainacademy.model.implementations.UpsImpl;
 
 import javax.persistence.*;
-import java.util.Set;
 
 /**
  * This is our class for create some Enterprises in our holding. It extends from Cabinet, because we can remove UPS from
@@ -24,11 +22,6 @@ public class Enterprise extends ProjectEntity implements Cabinet {
     private String name;
 
     private String address;
-
-/*
-    @OneToMany(mappedBy = "ups", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private Set<UpsImpl> upsImpls;
-*/
 
     //GETTERS & SETTERS
 

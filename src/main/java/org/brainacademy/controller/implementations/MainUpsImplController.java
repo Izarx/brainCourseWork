@@ -22,13 +22,13 @@ import org.springframework.web.bind.annotation.*;
 public class MainUpsImplController {
 
     @Autowired
-    UpsImplService upsImplService;
+    private UpsImplService upsImplService;
 
     @Autowired
-    UpsService upsService;
+    private UpsService upsService;
 
     @Autowired
-    EnterpriseService enterpriseService;
+    private EnterpriseService enterpriseService;
 
     @Value("${errorUpsImpl.message}")
     private String errorMessage;

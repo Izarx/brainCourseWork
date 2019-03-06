@@ -18,7 +18,7 @@ import java.util.List;
 public class MainUpsController {
 
     @Autowired
-    UpsService upsService;
+    private UpsService upsService;
 
     @Value("${errorModel.message}")
     private String errorMessage;

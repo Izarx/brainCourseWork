@@ -21,7 +21,7 @@ import java.util.List;
 public class MainSparePartController {
 
     @Autowired
-    SparePartService sparePartService;
+    private SparePartService sparePartService;
 
     @Value("${errorModel.message}")
     private String errorMessage;

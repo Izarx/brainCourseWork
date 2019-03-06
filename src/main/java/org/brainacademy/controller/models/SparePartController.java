@@ -16,7 +16,7 @@ import java.util.List;
 public class SparePartController {
 
     @Autowired
-    SparePartService sparePartService;
+    private SparePartService sparePartService;
 
     @GetMapping(value = "/list-models")
     public ResponseEntity<List<ModelEquipment>> sparePartDetail() {

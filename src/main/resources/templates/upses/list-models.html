@@ -54,6 +54,8 @@
             <th>Model</th>
             <th>Price</th>
             <th>Type</th>
+            <th>Delete</th>
+            <th>Edit</th>
         </tr>
         </thead>
         <tbody>
@@ -62,6 +64,8 @@
             <td th:utext="${ups.name}">...</td>
             <td th:utext="${ups.price}">...</td>
             <td th:utext="${ups.type}">...</td>
+            <td> <a th:href="@{'/upses/delete-model/' + ${ups.id}}">Delete</a></td>
+            <td> <a th:href="@{'/upses/edit-model?id=' + ${ups.id}}">Edit</a></td>
         </tr>
         </tbody>
     </table>

@@ -12,7 +12,9 @@ public interface ModelEquipmentService {
 
     ModelEquipment getByName(String name);
 
-    List<ModelEquipment> getByType(String type);
+    ModelEquipment getById(Long id);
 
     ModelEquipment save (ModelEquipment modelEquipment);
+
+    void deleteById(Long id);
 }

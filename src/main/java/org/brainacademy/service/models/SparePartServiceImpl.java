@@ -26,17 +26,24 @@ public class SparePartServiceImpl implements SparePartService {
     }
 
     @Override
-    public List<ModelEquipment> getByType(String type) {
-        return spareRepository.findAll().stream().filter(s -> s.getType().name().equals(type)).collect(Collectors.toList());
-    }
-
-    @Override
     public SparePart getByName(String name) {
         return spareRepository.findByName(name);
     }
 
     @Override
+    public ModelEquipment getById(final Long id)
+    {
+        return spareRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public ModelEquipment save(ModelEquipment part) {
         return spareRepository.save((SparePart) part);
+    }
+
+    @Override
+    public void deleteById(final Long id)
+    {
+        spareRepository.deleteById(id);
     }
 }

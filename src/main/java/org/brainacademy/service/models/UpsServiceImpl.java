@@ -26,17 +26,24 @@ public class UpsServiceImpl implements UpsService {
     }
 
     @Override
-    public List<ModelEquipment> getByType(String type) {
-        return upsRepository.findAll().stream().filter(s -> s.getType().name().equals(type)).collect(Collectors.toList());
-    }
-
-    @Override
     public Ups getByName(String name) {
         return upsRepository.findByName(name);
     }
 
     @Override
+    public ModelEquipment getById(final Long id)
+    {
+        return upsRepository.findById(id).orElse(null);
+    }
+
+    @Override
     public ModelEquipment save(ModelEquipment modelEquipment) {
         return upsRepository.save( (Ups) modelEquipment);
+    }
+
+    @Override
+    public void deleteById(final Long id)
+    {
+        upsRepository.deleteById(id);
     }
 }

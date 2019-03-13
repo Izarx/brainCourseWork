@@ -35,7 +35,6 @@ public class NetworkCard extends EquipmentImplementation {
 
     //GETTERS & SETTERS
 
-
     public String getName() {
         return name;
     }

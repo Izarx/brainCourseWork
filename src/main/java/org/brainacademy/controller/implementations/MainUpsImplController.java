@@ -5,8 +5,9 @@ import org.brainacademy.model.implementations.UpsImpl;
 import org.brainacademy.model.models.Ups;
 import org.brainacademy.service.EnterpriseService;
 import org.brainacademy.service.implementations.UpsImplService;
-import org.brainacademy.service.models.UpsService;
+import org.brainacademy.service.models.ModelEquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,7 +26,8 @@ public class MainUpsImplController {
     private UpsImplService upsImplService;
 
     @Autowired
-    private UpsService upsService;
+    @Qualifier("ups")
+    private ModelEquipmentService upsService;
 
     @Autowired
     private EnterpriseService enterpriseService;

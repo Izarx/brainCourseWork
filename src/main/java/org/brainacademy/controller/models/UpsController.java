@@ -1,9 +1,9 @@
 package org.brainacademy.controller.models;
 
-import org.brainacademy.model.models.ModelEquipment;
 import org.brainacademy.model.models.Ups;
-import org.brainacademy.service.models.UpsService;
+import org.brainacademy.service.models.ModelEquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +19,13 @@ import java.util.List;
 public class UpsController {
 
     @Autowired
-    private UpsService upsService;
+    @Qualifier("ups")
+    private ModelEquipmentService upsService;
 
     @GetMapping(value = "/list-models")
-    public ResponseEntity<List<ModelEquipment>> upsDetails(){
-        List<ModelEquipment> upsDetails = upsService.getList();
-        return new ResponseEntity<List<ModelEquipment>>(upsDetails, HttpStatus.OK);
+    public ResponseEntity<List<Ups>> upsDetails(){
+        List<Ups> upsDetails = upsService.getList();
+        return new ResponseEntity<>(upsDetails, HttpStatus.OK);
     }
 
     @PostMapping(value = "/add-model")

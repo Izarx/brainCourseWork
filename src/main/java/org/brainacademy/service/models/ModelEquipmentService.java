@@ -17,4 +17,6 @@ public interface ModelEquipmentService<T extends ModelEquipment> {
     T save (T modelEquipment);
 
     void deleteById(Long id);
+
+    List<String> getTypes();
 }

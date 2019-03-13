@@ -14,7 +14,7 @@ public class Ups extends ModelEquipment {
     //FIELDS
 
     @Enumerated(EnumType.STRING)
-    private UpsTypes type;
+    private UpsType type;
 
     //CONSTRUCTOR
 
@@ -22,11 +22,11 @@ public class Ups extends ModelEquipment {
 
     //SETTERS & GETTERS
 
-    public UpsTypes getType() {
+    public UpsType getType() {
         return type;
     }
 
-    public void setType(UpsTypes type) {
+    public void setType(UpsType type) {
         this.type = type;
     }
 

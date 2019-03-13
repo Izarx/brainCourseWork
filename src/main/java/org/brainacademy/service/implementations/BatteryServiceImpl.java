@@ -2,7 +2,6 @@ package org.brainacademy.service.implementations;
 
 import org.brainacademy.dao.BatteryRepository;
 import org.brainacademy.model.implementations.Battery;
-import org.brainacademy.model.implementations.EquipmentImplementation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,23 +15,35 @@ public class BatteryServiceImpl implements BatteryService {
     BatteryRepository batteryRepository;
 
     @Override
-    public List<EquipmentImplementation> getList() {
-        return batteryRepository.findAll().stream().filter(s -> s instanceof Battery).collect(Collectors.toList());
-    }
-
-    @Override
-    public EquipmentImplementation getBySerialNumber(String serialNumber) {
-        return batteryRepository.findBySerialNumber(serialNumber);
-    }
-
-    @Override
-    public List<EquipmentImplementation> getListByIsBroken(boolean isBroken) {
+    public Battery getById(final Long id)
+    {
         return null;
     }
 
     @Override
-    public EquipmentImplementation save(EquipmentImplementation equipmentImplementation) {
-        return batteryRepository.save((Battery) equipmentImplementation);
+    public List<Battery> getList() {
+        return batteryRepository.findAll();
+    }
+
+    @Override
+    public Battery getBySerialNumber(String serialNumber) {
+        return batteryRepository.findBySerialNumber(serialNumber);
+    }
+
+    @Override
+    public List<Battery> getListByIsBroken(boolean isBroken) {
+        return null;
+    }
+
+    @Override
+    public Battery save(Battery battery) {
+        return batteryRepository.save(battery);
+    }
+
+    @Override
+    public void deleteById(final Long id)
+    {
+
     }
 
     @Override

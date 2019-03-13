@@ -2,14 +2,16 @@ package org.brainacademy.service.models;
 
 import org.brainacademy.dao.UpsRepository;
 import org.brainacademy.model.models.Ups;
+import org.brainacademy.model.models.UpsType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-public class UpsServiceImpl implements UpsService {
+@Service("ups")
+public class UpsServiceImpl implements ModelEquipmentService<Ups> {
 
     @Autowired
     UpsRepository upsRepository;
@@ -44,5 +46,11 @@ public class UpsServiceImpl implements UpsService {
     public void deleteById(final Long id)
     {
         upsRepository.deleteById(id);
+    }
+
+    @Override
+    public List<String> getTypes()
+    {
+        return Arrays.stream(UpsType.values()).map(UpsType::name).collect(Collectors.toList());
     }
 }

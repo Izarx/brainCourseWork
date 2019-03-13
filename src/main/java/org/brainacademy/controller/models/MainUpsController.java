@@ -2,23 +2,23 @@ package org.brainacademy.controller.models;
 
 import org.brainacademy.controller.form.ModelEquipmentForm;
 import org.brainacademy.model.models.Ups;
-import org.brainacademy.model.models.UpsTypes;
-import org.brainacademy.service.models.UpsService;
+import org.brainacademy.model.models.UpsType;
+import org.brainacademy.service.models.ModelEquipmentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/upses")
 public class MainUpsController {
 
     @Autowired
-    private UpsService upsService;
+    @Qualifier("ups")
+    private ModelEquipmentService upsService;
 
     @Value("${errorModel.message}")
     private String errorMessage;
@@ -33,7 +33,7 @@ public class MainUpsController {
     public String showAddUpsPage(Model model){
         ModelEquipmentForm upsForm = new ModelEquipmentForm();
         model.addAttribute("upsForm", upsForm);
-        model.addAttribute("upsTypes", getUpsTypes());
+        model.addAttribute("upsTypes", upsService.getTypes());
         return "upses/add-model";
     }
 
@@ -48,7 +48,7 @@ public class MainUpsController {
             Ups newUps = new Ups();
             newUps.setName(name);
             newUps.setPrice(price);
-            newUps.setType(UpsTypes.valueOf(type));
+            newUps.setType(UpsType.valueOf(type));
             upsService.save(newUps);
 
             return "redirect:/upses/list-models";
@@ -86,13 +86,4 @@ public class MainUpsController {
         upsService.deleteById(id);
         return "redirect:/upses/list";
     }
-
-    private List<String> getUpsTypes(){
-        List<String> list = new ArrayList<>();
-        for (UpsTypes t : UpsTypes.values()) {
-            list.add(t.name());
-        }
-        return list;
-    }
-
 }

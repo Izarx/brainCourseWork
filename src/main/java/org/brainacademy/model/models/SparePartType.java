@@ -1,6 +1,7 @@
 package org.brainacademy.model.models;
 
-public enum SparePartTypes {
+public enum SparePartType
+{
     BATTERY,
     NETWORK_CARD
 }

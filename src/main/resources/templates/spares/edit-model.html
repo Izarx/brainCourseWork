@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>Edit Enterprise</title>
+  <title>Edit Model of Spare Part</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -11,9 +11,8 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>Edit Enterprise</h1>
+  <h1>Edit Spare Part Model</h1>
 </div>
-
 </div>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -40,35 +39,40 @@
   </div>
 </nav>
 <br/><br/>
-
 <div class="container">
-  <form th:action="@{'/enterprises/edit?id=' + ${enterprise.id}}"
-        th:object="${enterpriseForm}"
-        th:method="put">
+  <form th:action="@{'/spares/edit?id=' + ${spare.id}}"
+        th:object="${modelEquipmentForm}"
+        method="post">
 
     <div class="form-group form-item">
-      <label th:utext="${enterprise.id}"></label>
-    </div>
-
-    <div class="form-group form-item">
-      <label for="name">Name:</label>
-      <input type="text" th:field="*{name}" id="name" autofocus="autofocus" th:placeholder="${enterprise.name}">
+      <label for="name">Model:</label>
+      <input type="text" th:field="*{name}" id="name" autofocus="autofocus" th:placeholder="${spare.name}">
     </div>
     <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
+
     <div class="form-group form-item">
-      <label for="address">Address:</label>
-      <input type="text" id="address" th:field="*{address}" th:placeholder="${enterprise.address}">
+      <label for="price">Price:</label>
+      <input type="text" id="price" th:field="*{price}" th:placeholder="${spare.price}">
     </div>
-    <p class="error-label" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">ERROR</p>
+    <p class="error-label" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">ERROR</p>
+
+    <div class="form-group form-item">
+      <label for="type">Type:</label>
+      <select class="form-control" id="type" th:field="*{type}" th:placeholder="${spare.type}">
+        <option value="0" th:utext="${spare.type}"></option>
+        <option th:each="sparePartType : ${sparePartTypes}" th:value="${sparePartType}" th:text="${sparePartType}"></option>
+      </select>
+    </div>
 
     <div class="form-group">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-          <input type="submit" name="login-submit" id="login-submit" value="Update">
+          <input type="submit" name="login-submit" id="login-submit" value="Add">
         </div>
       </div>
     </div>
   </form>
+  <h4 class="text-center"><a th:href="@{/spares/list-models}">Spare Parts Models List</a></h4>
 </div>
 </body>
 </html>

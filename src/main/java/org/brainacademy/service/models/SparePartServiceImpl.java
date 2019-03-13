@@ -10,6 +10,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Implementation of common service interface ModelEquipmentService. This implementation communicate with repository
+ * of spare parts and has identifier "sparePart".
+ */
+
 @Service("sparePart")
 public class SparePartServiceImpl implements ModelEquipmentService<SparePart> {
 

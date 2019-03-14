@@ -7,7 +7,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
@@ -45,6 +44,11 @@
         method="post">
 
     <div class="form-group form-item">
+      <label>ID:</label>
+      <label th:utext="${spare.id}"></label>
+    </div>
+
+    <div class="form-group form-item">
       <label for="name">Model:</label>
       <input type="text" th:field="*{name}" id="name" autofocus="autofocus" th:placeholder="${spare.name}">
     </div>
@@ -57,17 +61,14 @@
     <p class="error-label" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">ERROR</p>
 
     <div class="form-group form-item">
-      <label for="type">Type:</label>
-      <select class="form-control" id="type" th:field="*{type}" th:placeholder="${spare.type}">
-        <option value="0" th:utext="${spare.type}"></option>
-        <option th:each="sparePartType : ${sparePartTypes}" th:value="${sparePartType}" th:text="${sparePartType}"></option>
-      </select>
+      <label>Type:</label>
+      <label th:text="$ {spare.type}"></label>
     </div>
 
     <div class="form-group">
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3">
-          <input type="submit" name="login-submit" id="login-submit" value="Add">
+          <input type="submit" name="login-submit" id="login-submit" value="Update">
         </div>
       </div>
     </div>

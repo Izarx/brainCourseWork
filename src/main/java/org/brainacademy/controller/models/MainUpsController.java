@@ -62,7 +62,8 @@ public class MainUpsController {
     public String showUpdateUpsPage(Model model, @RequestParam("id") Long id) {
         model.addAttribute("upsForm", new ModelEquipmentForm());
         model.addAttribute("ups", upsService.getById(id));
-        return "upses/edit";
+        model.addAttribute("upsTypes", upsService.getTypes());
+        return "upses/edit-model";
     }
 
     @RequestMapping(value = {"/edit-model"}, method = RequestMethod.PUT)
@@ -84,6 +85,6 @@ public class MainUpsController {
     @RequestMapping("/delete-model/{id}")
     public String deleteUps (@PathVariable("id") Long id){
         upsService.deleteById(id);
-        return "redirect:/upses/list";
+        return "redirect:/upses/list-models";
     }
 }

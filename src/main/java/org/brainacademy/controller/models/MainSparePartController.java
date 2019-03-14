@@ -9,10 +9,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/spares")
@@ -33,8 +30,7 @@ public class MainSparePartController {
 
     @GetMapping(value = "/add-model")
     public String showAddSparesPage(Model model){
-        ModelEquipmentForm modelEquipmentForm = new ModelEquipmentForm();
-        model.addAttribute("modelEquipmentForm", modelEquipmentForm);
+        model.addAttribute("modelEquipmentForm", new ModelEquipmentForm());
         model.addAttribute("sparePartTypes", sparePartService.getTypes());
         return "spares/add-model";
     }
@@ -57,5 +53,35 @@ public class MainSparePartController {
 
         model.addAttribute("errorMessage", errorMessage);
         return "spares/add-model";
+    }
+
+    @GetMapping(value = {"/edit-model"})
+    public String showUpdateSparesPage(Model model, @RequestParam("id") Long id) {
+        model.addAttribute("modelEquipmentForm", new ModelEquipmentForm());
+        model.addAttribute("spare", sparePartService.getById(id));
+        model.addAttribute("sparePartTypes", sparePartService.getTypes());
+        return "spares/edit-model";
+    }
+
+    @RequestMapping(value = {"/edit-model"}, method = RequestMethod.PUT)
+    public String updateSparePart(@RequestParam("id") Long id, @ModelAttribute("modelEquipmentForm") ModelEquipmentForm modelEquipmentForm){
+        SparePart updatedSparePart = (SparePart) sparePartService.getById(id);
+        String name = modelEquipmentForm.getName();
+        Double price = modelEquipmentForm.getPrice();
+        if (name != null && !name.isEmpty()){
+            updatedSparePart.setName(name);
+        }
+        if (price != null){
+            updatedSparePart.setPrice(price);
+        }
+
+        sparePartService.save(updatedSparePart);
+        return "redirect:/spares/list-models";
+    }
+
+    @RequestMapping("/delete-model/{id}")
+    public String deleteSparePart (@PathVariable("id") Long id){
+        sparePartService.deleteById(id);
+        return "redirect:/spares/list-models";
     }
 }

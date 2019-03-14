@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
@@ -59,8 +58,8 @@
             <td th:utext="${spare.name}">...</td>
             <td th:utext="${spare.price}">...</td>
             <td th:utext="${spare.type}">...</td>
-            <td> <a th:href="@{'/spares/delete/' + ${spare.id}}">Delete</a></td>
-            <td> <a th:href="@{'/spares/edit?id=' + ${spare.id}}">Edit</a></td>
+            <td> <a th:href="@{'/spares/delete-model/' + ${spare.id}}">Delete</a></td>
+            <td> <a th:href="@{'/spares/edit-model?id=' + ${spare.id}}">Edit</a></td>
         </tr>
         </tbody>
     </table>

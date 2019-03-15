@@ -60,23 +60,23 @@
     <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
 
     <div class="form-group form-item">
-      <label for="serialNumber">Name:</label>
+      <label for="serialNumber">Serial Number:</label>
       <input type="text" th:field="*{serialNumber}" id="serialNumber" autofocus="autofocus" th:placeholder="${networkCard.serialNumber}">
     </div>
     <p class="error-label" th:if="${#fields.hasErrors('serialNumber')}" th:errors="*{serialNumber}">ERROR</p>
 
     <div class="form-group form-item">
-      <label for="sparePart">Network Card Model:</label>
-      <select class="form-control" id="sparePart" th:field="*{sparePart}" th:placeholder="${networkCard.sparePart.name}" size="10">
-        <option value="0" th:utext="${networkCard.sparePart.name}">...</option>
-        <option th:each="sparePart : ${spareParts}" th:value="${sparePart}" th:text="${sparePart}"></option>
+      <label for="model">Network Card Model:</label>
+      <select class="form-control" id="model" th:field="*{model}" th:placeholder="${networkCard.model.name}">
+        <option value="0" th:utext="${networkCard.model.name}">...</option>
+        <option th:each="model : ${spareParts}" th:value="${model}" th:text="${model}"></option>
       </select>
     </div>
-    <p class="error-label" th:if="${#fields.hasErrors('sparePart')}" th:errors="*{sparePart}">ERROR</p>
+    <p class="error-label" th:if="${#fields.hasErrors('model')}" th:errors="*{model}">ERROR</p>
 
     <div class="form-group form-item">
       <label for="ups">Network Card Model:</label>
-      <select class="form-control" id="ups" th:field="*{ups}" th:placeholder="${networkCard.ups.name}" size="10">
+      <select class="form-control" id="ups" th:field="*{ups}" th:placeholder="${networkCard.ups.name}">
         <option value="0" th:utext="${networkCard.ups.name}">...</option>
         <option th:each="ups : ${upses}" th:value="${ups}" th:text="${ups}"></option>
       </select>
@@ -84,7 +84,7 @@
     <p class="error-label" th:if="${#fields.hasErrors('ups')}" th:errors="*{ups}">ERROR</p>
 
     <div class="form-group form-item">
-      <label for="isBroken">Broken:</label>
+      <label for="isBroken">Status:</label>
       <select class="form-control" id="isBroken" th:field="*{isBroken}" th:placeholder="${networkCard.isBroken}">
         <option value="0" th:utext="${networkCard.isBroken}">...</option>
         <option value="1" th:utext="${!networkCard.isBroken}">...</option>

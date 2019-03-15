@@ -22,7 +22,7 @@ public class NetworkCard extends EquipmentImplementation {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_model", nullable = false)
     @JsonIgnore
-    private SparePart sparePart;
+    private SparePart model;
 
     @OneToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_ups", nullable = false)
@@ -43,12 +43,12 @@ public class NetworkCard extends EquipmentImplementation {
         this.name = name;
     }
 
-    public SparePart getSparePart() {
-        return sparePart;
+    public SparePart getModel() {
+        return model;
     }
 
-    public void setSparePart(SparePart sparePart) {
-        this.sparePart = sparePart;
+    public void setModel(SparePart model) {
+        this.model = model;
     }
 
     public UpsImpl getUps() {

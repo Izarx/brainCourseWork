@@ -63,7 +63,7 @@
             <td th:utext="${networkCard.id}">...</td>
             <td th:utext="${networkCard.name}">...</td>
             <td th:utext="${networkCard.serialNumber}">...</td>
-            <td th:utext="${networkCard.sparePart.name}">...</td>
+            <td th:utext="${networkCard.model.name}">...</td>
             <td th:utext="${networkCard.ups.name}">...</td>
             <td th:utext="${networkCard.isBroken} ? 'broken' : 'in work'">...</td>
             <td> <a th:href="@{'/spares/nics/delete/' + ${networkCard.id}}">Delete</a></td>

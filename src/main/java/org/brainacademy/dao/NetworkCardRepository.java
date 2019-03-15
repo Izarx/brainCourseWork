@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface NetworkCardRepository extends JpaRepository<NetworkCard, Long> {
 
-    List<NetworkCard> findBySparePartId (Long sparePartId);
+    List<NetworkCard> findByModelId (Long modelId);
 
     NetworkCard findByUpsId (Long upsId);
 

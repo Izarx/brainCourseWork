@@ -45,7 +45,7 @@ public class MainNetworkCardController {
     public String saveNetworkCard (Model model, @ModelAttribute ("networkCardForm") NetworkCardForm networkCardForm){
         String name = networkCardForm.getName();
         String serialNumber = networkCardForm.getSerialNumber();
-        String sparePartModel = networkCardForm.getSparePart();
+        String sparePartModel = networkCardForm.getModel();
         String upsImpl = networkCardForm.getUps();
 
         if ((name != null && !name.isEmpty()) && (serialNumber != null && !serialNumber.isEmpty()) &&
@@ -54,7 +54,7 @@ public class MainNetworkCardController {
             NetworkCard newNetworkCard = new NetworkCard();
             newNetworkCard.setName(name);
             newNetworkCard.setSerialNumber(serialNumber);
-            newNetworkCard.setSparePart((SparePart) networkCardModelService.getByName(sparePartModel));
+            newNetworkCard.setModel((SparePart) networkCardModelService.getByName(sparePartModel));
             newNetworkCard.setUps(upsImplService.getByName(upsImpl));
             newNetworkCard.setIsBroken(false);
             networkCardService.save(newNetworkCard);
@@ -78,7 +78,7 @@ public class MainNetworkCardController {
         NetworkCard updatedNetworkCard = networkCardService.getById(id);
         String name = networkCardForm.getName();
         String serialNumber = networkCardForm.getSerialNumber();
-        String sparePart = networkCardForm.getSparePart();
+        String sparePart = networkCardForm.getModel();
         String upsImpl = networkCardForm.getUps();
         Boolean isBroken = networkCardForm.getIsBroken();
         if (name != null && !name.isEmpty()){
@@ -88,7 +88,7 @@ public class MainNetworkCardController {
             updatedNetworkCard.setSerialNumber(serialNumber);
         }
         if (sparePart != null && !sparePart.isEmpty()){
-            updatedNetworkCard.setSparePart((SparePart) networkCardModelService.getByName(sparePart));
+            updatedNetworkCard.setModel((SparePart) networkCardModelService.getByName(sparePart));
         }
         if (upsImpl != null && !upsImpl.isEmpty()) {
             updatedNetworkCard.setUps(upsImplService.getByName(upsImpl));

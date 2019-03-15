@@ -72,7 +72,7 @@
         </div>
         <p class="error-label" th:if="${#fields.hasErrors('enterprise')}" th:errors="*{enterprise}">ERROR</p>
         <div class="form-group form-item">
-            <label for="isBroken">Broken:</label>
+            <label for="isBroken">Status:</label>
             <select class="form-control" id="isBroken" th:field="*{isBroken}" th:placeholder="${upsImpl.isBroken}">
                 <option value="0" th:utext="${upsImpl.isBroken}">...</option>
                 <option value="1" th:utext="${!upsImpl.isBroken}">...</option>

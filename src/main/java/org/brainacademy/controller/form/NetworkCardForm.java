@@ -4,7 +4,7 @@ public class NetworkCardForm {
 
     private String name;
     private String serialNumber;
-    private String sparePart;
+    private String model;
     private String ups;
     private Boolean isBroken;
 
@@ -28,14 +28,14 @@ public class NetworkCardForm {
         this.serialNumber = serialNumber;
     }
 
-    public String getSparePart()
+    public String getModel()
     {
-        return sparePart;
+        return model;
     }
 
-    public void setSparePart(final String sparePart)
+    public void setModel(final String model)
     {
-        this.sparePart = sparePart;
+        this.model = model;
     }
 
     public String getUps()

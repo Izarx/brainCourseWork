@@ -59,7 +59,7 @@
         <p class="error-label" th:if="${#fields.hasErrors('serialNumber')}" th:errors="*{serialNumber}">ERROR</p>
         <div class="form-group form-item">
             <label for="model">UPS Model:</label>
-            <select class="form-control" id="model" th:field="*{model}" placeholder="Model" size="10">
+            <select class="form-control" id="model" th:field="*{model}" placeholder="Model">
                 <option value="0">Select model of UPS</option>
                 <option th:each="ups : ${upses}" th:value="${ups}" th:text="${ups}"></option>
             </select>
@@ -67,7 +67,7 @@
         <p class="error-label" th:if="${#fields.hasErrors('model')}" th:errors="*{model}">ERROR</p>
         <div class="form-group form-item">
             <label for="enterprise">Enterprise:</label>
-            <select class="form-control" id="enterprise" th:field="*{enterprise}" placeholder="Enterprise" size="10">
+            <select class="form-control" id="enterprise" th:field="*{enterprise}" placeholder="Enterprise">
                 <option value="0">Select Enterprise</option>
                 <option th:each="enterprise : ${enterprises}" th:value="${enterprise}" th:text="${enterprise}"></option>
             </select>

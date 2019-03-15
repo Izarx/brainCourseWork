@@ -44,7 +44,7 @@ public class MainUpsImplController {
     @GetMapping(value = {"/add"})
     public String showAddUpsImplPage(Model model) {
         model.addAttribute("upsImplForm", new UpsImplForm());
-        model.addAttribute("upses", upsService.getListOfNames(upsImplService.getList()));
+        model.addAttribute("upses", upsService.getListOfNames(upsService.getList()));
         model.addAttribute("enterprises", enterpriseService.getListOfNames());
         return "upses/add";
     }

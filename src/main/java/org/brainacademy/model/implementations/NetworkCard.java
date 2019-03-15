@@ -6,7 +6,7 @@ import org.brainacademy.model.models.SparePart;
 import javax.persistence.*;
 
 /**
- * Class to create table with examples of Network cards
+ * Class to create examples of Network cards witch will be the rows in the table "network_cards" in DB
  * @author Ihor Zakharko
  */
 

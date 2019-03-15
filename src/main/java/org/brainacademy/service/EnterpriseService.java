@@ -14,7 +14,7 @@ public interface EnterpriseService {
 
     List<Enterprise> getList();
 
-    List<String> getEnterprises();
+    List<String> getListOfNames();
 
     public Enterprise getEnterpriseById(Long id);
 

@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
@@ -28,13 +27,16 @@
                 <a class="nav-link" th:href="@{/enterprises/list}">List of Enterprises</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/upses/list-models}">List of UPS Models</a>
+                <a class="nav-link" th:href="@{/upses/models/list}">List of UPS Models</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/upses/list-examples}">List of UPS Examples</a>
+                <a class="nav-link" th:href="@{/upses/list}">List of UPS Examples</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/spares/list-models}">List of Spare Parts Models</a>
+                <a class="nav-link" th:href="@{/spares/models/list}">List of Spare Parts Models</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/spares/nics/list}">List of Network Cards</a>
             </li>
         </ul>
     </div>
@@ -42,11 +44,12 @@
 <br/><br/>
 
 <div class="container">
-    <form th:action="@{'/upses/edit-example?id=' + ${upsImpl.id}}"
+    <form th:action="@{'/upses/edit?id=' + ${upsImpl.id}}"
           th:object="${upsImplForm}"
           th:method="put">
 
         <div class="form-group form-item">
+            <label>ID:</label>
             <label th:utext="${upsImpl.id}"></label>
         </div>
 
@@ -55,7 +58,11 @@
             <input type="text" th:field="*{name}" id="name" autofocus="autofocus" th:placeholder="${upsImpl.name}">
         </div>
         <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
-
+        <div class="form-group form-item">
+            <label for="serialNumber">Serial Number:</label>
+            <input type="text" id="serialNumber" th:field="*{serialNumber}" th:placeholder="${upsImpl.serialNumber}">
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('serialNumber')}" th:errors="*{serialNumber}">ERROR</p>
         <div class="form-group form-item">
             <label for="enterprise">Enterprise:</label>
             <select class="form-control" id="enterprise" th:field="*{enterprise}" th:placeholder="${upsImpl.enterprise.name}">

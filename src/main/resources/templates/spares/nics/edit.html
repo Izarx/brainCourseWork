@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>Edit Enterprise</title>
+  <title>Edit Network Card</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>Edit Enterprise</h1>
+  <h1>Edit Network Card</h1>
 </div>
 
 </div>
@@ -44,25 +44,53 @@
 <br/><br/>
 
 <div class="container">
-  <form th:action="@{'/enterprises/edit?id=' + ${enterprise.id}}"
-        th:object="${enterpriseForm}"
+  <form th:action="@{'/spares/nics/edit?id=' + ${networkCard.id}}"
+        th:object="${networkCardForm}"
         th:method="put">
 
     <div class="form-group form-item">
       <label>ID:</label>
-      <label th:utext="${enterprise.id}"></label>
+      <label th:utext="${networkCard.id}"></label>
     </div>
 
     <div class="form-group form-item">
       <label for="name">Name:</label>
-      <input type="text" th:field="*{name}" id="name" autofocus="autofocus" th:placeholder="${enterprise.name}">
+      <input type="text" th:field="*{name}" id="name" autofocus="autofocus" th:placeholder="${networkCard.name}">
     </div>
     <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
+
     <div class="form-group form-item">
-      <label for="address">Address:</label>
-      <input type="text" id="address" th:field="*{address}" th:placeholder="${enterprise.address}">
+      <label for="serialNumber">Name:</label>
+      <input type="text" th:field="*{serialNumber}" id="serialNumber" autofocus="autofocus" th:placeholder="${networkCard.serialNumber}">
     </div>
-    <p class="error-label" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">ERROR</p>
+    <p class="error-label" th:if="${#fields.hasErrors('serialNumber')}" th:errors="*{serialNumber}">ERROR</p>
+
+    <div class="form-group form-item">
+      <label for="sparePart">Network Card Model:</label>
+      <select class="form-control" id="sparePart" th:field="*{sparePart}" th:placeholder="${networkCard.sparePart.name}" size="10">
+        <option value="0" th:utext="${networkCard.sparePart.name}">...</option>
+        <option th:each="sparePart : ${spareParts}" th:value="${sparePart}" th:text="${sparePart}"></option>
+      </select>
+    </div>
+    <p class="error-label" th:if="${#fields.hasErrors('sparePart')}" th:errors="*{sparePart}">ERROR</p>
+
+    <div class="form-group form-item">
+      <label for="ups">Network Card Model:</label>
+      <select class="form-control" id="ups" th:field="*{ups}" th:placeholder="${networkCard.ups.name}" size="10">
+        <option value="0" th:utext="${networkCard.ups.name}">...</option>
+        <option th:each="ups : ${upses}" th:value="${ups}" th:text="${ups}"></option>
+      </select>
+    </div>
+    <p class="error-label" th:if="${#fields.hasErrors('ups')}" th:errors="*{ups}">ERROR</p>
+
+    <div class="form-group form-item">
+      <label for="isBroken">Broken:</label>
+      <select class="form-control" id="isBroken" th:field="*{isBroken}" th:placeholder="${networkCard.isBroken}">
+        <option value="0" th:utext="${networkCard.isBroken}">...</option>
+        <option value="1" th:utext="${!networkCard.isBroken}">...</option>
+      </select>
+    </div>
+    <p class="error-label" th:if="${#fields.hasErrors('isBroken')}" th:errors="*{isBroken}">ERROR</p>
 
     <div class="form-group">
       <div class="row">

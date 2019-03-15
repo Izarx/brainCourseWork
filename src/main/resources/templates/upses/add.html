@@ -2,16 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Add new Enterprise</title>
+    <title>Add new Example of UPS</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>Add New Enterprise</h1>
+    <h1>Add New UPS Example</h1>
 </div>
 
 </div>
@@ -45,8 +44,8 @@
 <br/><br/>
 
 <div class="container">
-    <form th:action="@{/enterprises/add}"
-          th:object="${enterpriseForm}"
+    <form th:action="@{/upses/add}"
+          th:object="${upsImplForm}"
           method="post">
         <div class="form-group form-item">
             <label for="name">Name:</label>
@@ -54,11 +53,26 @@
         </div>
         <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
         <div class="form-group form-item">
-            <label for="address">Address:</label>
-            <input type="text" id="address" th:field="*{address}" placeholder="Address">
+            <label for="serialNumber">Serial Number:</label>
+            <input type="text" id="serialNumber" th:field="*{serialNumber}" placeholder="Serial Number">
         </div>
-        <p class="error-label" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">ERROR</p>
-
+        <p class="error-label" th:if="${#fields.hasErrors('serialNumber')}" th:errors="*{serialNumber}">ERROR</p>
+        <div class="form-group form-item">
+            <label for="model">UPS Model:</label>
+            <select class="form-control" id="model" th:field="*{model}" placeholder="Model" size="10">
+                <option value="0">Select model of UPS</option>
+                <option th:each="ups : ${upses}" th:value="${ups}" th:text="${ups}"></option>
+            </select>
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('model')}" th:errors="*{model}">ERROR</p>
+        <div class="form-group form-item">
+            <label for="enterprise">Enterprise:</label>
+            <select class="form-control" id="enterprise" th:field="*{enterprise}" placeholder="Enterprise" size="10">
+                <option value="0">Select Enterprise</option>
+                <option th:each="enterprise : ${enterprises}" th:value="${enterprise}" th:text="${enterprise}"></option>
+            </select>
+        </div>
+        <p class="error-label" th:if="${#fields.hasErrors('enterprise')}" th:errors="*{enterprise}">ERROR</p>
         <div class="form-group">
             <div class="row">
                 <div class="col-sm-6 col-sm-offset-3">

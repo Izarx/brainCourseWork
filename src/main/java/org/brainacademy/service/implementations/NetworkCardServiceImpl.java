@@ -3,9 +3,15 @@ package org.brainacademy.service.implementations;
 import org.brainacademy.dao.NetworkCardRepository;
 import org.brainacademy.model.implementations.NetworkCard;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Implementation of Network Card Service interface to work with repository of Network Cards
+ */
+
+@Service
 public class NetworkCardServiceImpl implements NetworkCardService {
 
     @Autowired
@@ -14,37 +20,37 @@ public class NetworkCardServiceImpl implements NetworkCardService {
     @Override
     public NetworkCard getById(final Long id)
     {
-        return null;
+        return networkCardRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<NetworkCard> getList() {
-        return null;
+        return networkCardRepository.findAll();
     }
 
     @Override
     public NetworkCard getBySerialNumber(String serialNumber) {
-        return null;
+        return networkCardRepository.findBySerialNumber(serialNumber);
     }
 
     @Override
     public List<NetworkCard> getListByIsBroken(boolean isBroken) {
-        return null;
+        return networkCardRepository.findByIsBroken(isBroken);
     }
 
     @Override
     public NetworkCard save(NetworkCard equipmentImplementation) {
-        return null;
+        return networkCardRepository.save(equipmentImplementation);
     }
 
     @Override
     public void deleteById(final Long id)
     {
-
+        networkCardRepository.deleteById(id);
     }
 
     @Override
     public NetworkCard getByName(String name) {
-        return null;
+        return networkCardRepository.findByName(name);
     }
 }

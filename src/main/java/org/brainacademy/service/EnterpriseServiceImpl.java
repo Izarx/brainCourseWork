@@ -24,7 +24,7 @@ public class EnterpriseServiceImpl implements EnterpriseService {
     }
 
     @Override
-    public List<String> getEnterprises() {
+    public List<String> getListOfNames() {
         return enterpriseRepository.findAll().stream().map(Enterprise::getName).collect(Collectors.toList());
     }
 

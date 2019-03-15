@@ -15,20 +15,20 @@ import java.util.List;
  */
 
 @RestController
-@RequestMapping("/api/upses")
+@RequestMapping("/api/upses/models")
 public class UpsController {
 
     @Autowired
     @Qualifier("ups")
     private ModelEquipmentService upsService;
 
-    @GetMapping(value = "/list-models")
+    @GetMapping(value = "/list")
     public ResponseEntity<List<Ups>> upsDetails(){
         List<Ups> upsDetails = upsService.getList();
         return new ResponseEntity<>(upsDetails, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/add-model")
+    @PostMapping(value = "/add")
     public ResponseEntity<?> saveUps( @RequestBody Ups ups) {
 
         upsService.save(ups);

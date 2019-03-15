@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/spares")
+@RequestMapping("/api/spares/models")
 public class SparePartController {
 
     @Autowired
     @Qualifier("sparePart")
     private ModelEquipmentService sparePartService;
 
-    @GetMapping(value = "/list-models")
+    @GetMapping(value = "/list")
     public ResponseEntity<List<SparePart>> sparePartDetail() {
         List<SparePart> sparePartDetail = sparePartService.getList();
         return new ResponseEntity<>(sparePartDetail, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/add-model")
+    @PostMapping(value = "/add")
     public ResponseEntity<?> saveSpare(@RequestBody SparePart sparePart) {
         sparePartService.save(sparePart);
         return new ResponseEntity<> (HttpStatus.OK);

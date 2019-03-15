@@ -2,16 +2,15 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>UPS List</title>
+    <title>Network Cards List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>UPS Models List</h1>
+    <h1>Network Cards List</h1>
 </div>
 </div>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -27,40 +26,48 @@
                 <a class="nav-link" th:href="@{/enterprises/list}">List of Enterprises</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" th:href="@{/upses/list-models}">List of UPS Models</a>
+                <a class="nav-link" th:href="@{/upses/models/list}">List of UPS Models</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/upses/list-examples}">List of UPS Examples</a>
+                <a class="nav-link" th:href="@{/upses/list}">List of UPS Examples</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/spares/list-models}">List of Spare Parts Models</a>
+                <a class="nav-link" th:href="@{/spares/models/list}">List of Spare Parts Models</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/spares/nics/list}">List of Network Cards</a>
             </li>
         </ul>
     </div>
 </nav>
 <br/><br/>
-<a th:href="@{/upses/add-model}">Add New Model of UPS</a>
+<a th:href="@{/spares/nics/add}">Add New Network Card</a>
 <br/><br/>
+
 <div class="container">
     <table class="table table-striped">
         <thead>
         <tr>
             <th>ID</th>
-            <th>Model</th>
-            <th>Price</th>
-            <th>Type</th>
+            <th>Name</th>
+            <th>Serial Number</th>
+            <th>NIC Model</th>
+            <th>UPS</th>
+            <th>Status</th>
             <th>Delete</th>
             <th>Edit</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each ="ups : ${upses}">
-            <td th:utext="${ups.id}">...</td>
-            <td th:utext="${ups.name}">...</td>
-            <td th:utext="${ups.price}">...</td>
-            <td th:utext="${ups.type}">...</td>
-            <td> <a th:href="@{'/upses/delete-model/' + ${ups.id}}">Delete</a></td>
-            <td> <a th:href="@{'/upses/edit-model?id=' + ${ups.id}}">Edit</a></td>
+        <tr th:each ="networkCard : ${networkCards}">
+            <td th:utext="${networkCard.id}">...</td>
+            <td th:utext="${networkCard.name}">...</td>
+            <td th:utext="${networkCard.serialNumber}">...</td>
+            <td th:utext="${networkCard.sparePart.name}">...</td>
+            <td th:utext="${networkCard.ups.name}">...</td>
+            <td th:utext="${networkCard.isBroken} ? 'broken' : 'in work'">...</td>
+            <td> <a th:href="@{'/spares/nics/delete/' + ${networkCard.id}}">Delete</a></td>
+            <td> <a th:href="@{'/spares/nics/edit?id=' + ${networkCard.id}}">Edit</a></td>
         </tr>
         </tbody>
     </table>

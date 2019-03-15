@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
  */
 
 @Service("sparePart")
-public class SparePartServiceImpl implements ModelEquipmentService<SparePart> {
+public class SparePartServiceImpl implements ModelEquipmentService<SparePart, SparePartType> {
 
     @Autowired
     SpareRepository spareRepository;
@@ -27,8 +27,9 @@ public class SparePartServiceImpl implements ModelEquipmentService<SparePart> {
     }
 
     @Override
-    public List<String> getListByName() {
-        return spareRepository.findAll().stream().map(SparePart::getName).collect(Collectors.toList());
+    public List<String> getListOfNames(final List<SparePart> list)
+    {
+        return list.stream().map(SparePart::getName).collect(Collectors.toList());
     }
 
     @Override
@@ -57,5 +58,11 @@ public class SparePartServiceImpl implements ModelEquipmentService<SparePart> {
     public List<String> getTypes()
     {
         return Arrays.stream(SparePartType.values()).map(SparePartType::name).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<SparePart> getListByType(final SparePartType sparePartType)
+    {
+        return getList().stream().filter(s -> s.getType().equals(sparePartType)).collect(Collectors.toList());
     }
 }

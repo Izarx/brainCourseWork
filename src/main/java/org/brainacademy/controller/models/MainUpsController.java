@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @Controller
-@RequestMapping("/upses")
+@RequestMapping("/upses/models")
 public class MainUpsController {
 
     @Autowired
@@ -23,21 +23,21 @@ public class MainUpsController {
     @Value("${errorModel.message}")
     private String errorMessage;
 
-    @GetMapping(value = { "/list-models" })
+    @GetMapping(value = { "/list" })
     public String upsesList (Model model) {
         model.addAttribute("upses", upsService.getList());
-        return "upses/list-models";
+        return "upses/models/list";
     }
 
-    @GetMapping(value = { "/add-model" })
+    @GetMapping(value = { "/add" })
     public String showAddUpsPage(Model model){
         ModelEquipmentForm upsForm = new ModelEquipmentForm();
         model.addAttribute("upsForm", upsForm);
         model.addAttribute("upsTypes", upsService.getTypes());
-        return "upses/add-model";
+        return "upses/models/add";
     }
 
-    @PostMapping(value = {"/add-model"})
+    @PostMapping(value = {"/add"})
     public String saveUps(Model model, @ModelAttribute ("upsForm") ModelEquipmentForm upsForm) {
 
         String name = upsForm.getName();
@@ -51,22 +51,22 @@ public class MainUpsController {
             newUps.setType(UpsType.valueOf(type));
             upsService.save(newUps);
 
-            return "redirect:/upses/list-models";
+            return "redirect:/upses/models/list";
         }
 
         model.addAttribute("errorMessage", errorMessage);
-        return "upses/add-model";
+        return "upses/models/add";
     }
 
-    @GetMapping(value = {"/edit-model"})
+    @GetMapping(value = {"/edit"})
     public String showUpdateUpsPage(Model model, @RequestParam("id") Long id) {
         model.addAttribute("upsForm", new ModelEquipmentForm());
         model.addAttribute("ups", upsService.getById(id));
         model.addAttribute("upsTypes", upsService.getTypes());
-        return "upses/edit-model";
+        return "upses/models/edit";
     }
 
-    @RequestMapping(value = {"/edit-model"}, method = RequestMethod.PUT)
+    @RequestMapping(value = {"/edit"}, method = RequestMethod.PUT)
     public String updateUps(@RequestParam("id") Long id, @ModelAttribute("upsForm") ModelEquipmentForm upsForm){
         Ups updatedUps = (Ups) upsService.getById(id);
         String name = upsForm.getName();
@@ -79,12 +79,12 @@ public class MainUpsController {
         }
 
         upsService.save(updatedUps);
-        return "redirect:/upses/list-models";
+        return "redirect:/upses/models/list";
     }
 
-    @RequestMapping("/delete-model/{id}")
+    @RequestMapping("/delete/{id}")
     public String deleteUps (@PathVariable("id") Long id){
         upsService.deleteById(id);
-        return "redirect:/upses/list-models";
+        return "redirect:/upses/models/list";
     }
 }

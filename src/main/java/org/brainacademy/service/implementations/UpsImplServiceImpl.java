@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Implementation of UPS Implementation Service interface to work with repository of UPS Implementations
@@ -33,6 +34,12 @@ public class UpsImplServiceImpl implements UpsImplService{
     }
 
     @Override
+    public List<String> getListOfNames()
+    {
+        return getList().stream().map(UpsImpl::getName).collect(Collectors.toList());
+    }
+
+    @Override
     public void deleteById(Long id) {
         upsImplRepository.deleteById(id);
     }
@@ -44,7 +51,7 @@ public class UpsImplServiceImpl implements UpsImplService{
 
     @Override
     public List<UpsImpl> getListByIsBroken(boolean isBroken) {
-        return null;
+        return upsImplRepository.findByIsBroken(isBroken);
     }
 
     @Override

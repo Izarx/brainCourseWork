@@ -35,21 +35,21 @@ public class MainUpsImplController {
     @Value("${errorUpsImpl.message}")
     private String errorMessage;
 
-    @GetMapping(value = {"/list-examples"})
+    @GetMapping(value = {"/list"})
     public String upsesImplList(Model model){
         model.addAttribute("upsImples", upsImplService.getList());
-        return "upses/list-examples";
+        return "upses/list";
     }
 
-    @GetMapping(value = {"/add-example"})
+    @GetMapping(value = {"/add"})
     public String showAddUpsImplPage(Model model) {
         model.addAttribute("upsImplForm", new UpsImplForm());
-        model.addAttribute("upses", upsService.getListByName());
-        model.addAttribute("enterprises", enterpriseService.getEnterprises());
-        return "upses/add-example";
+        model.addAttribute("upses", upsService.getListOfNames(upsImplService.getList()));
+        model.addAttribute("enterprises", enterpriseService.getListOfNames());
+        return "upses/add";
     }
 
-    @PostMapping(value = {"/add-example"})
+    @PostMapping(value = {"/add"})
     public String saveUpsImpl (Model model, @ModelAttribute ("upsImplForm") UpsImplForm upsImplForm){
 
         String name = upsImplForm.getName();
@@ -66,28 +66,32 @@ public class MainUpsImplController {
             newUpsImpl.setEnterprise(enterpriseService.getByName(enterprise));
             newUpsImpl.setIsBroken(false);
             upsImplService.save(newUpsImpl);
-            return "redirect:/upses/list-examples";
+            return "redirect:/upses/list";
         }
 
-        return "/add-example";
+        return "upses/add";
     }
 
-    @GetMapping(value = {"/edit-example"})
+    @GetMapping(value = {"/edit"})
     public String showUpdateUpsImplPage(Model model, @RequestParam("id") Long id) {
         model.addAttribute("upsImplForm", new UpsImplForm());
         model.addAttribute("upsImpl", upsImplService.getById(id));
-        model.addAttribute("enterprises", enterpriseService.getEnterprises());
-        return "upses/edit-example";
+        model.addAttribute("enterprises", enterpriseService.getListOfNames());
+        return "upses/edit";
     }
 
-    @RequestMapping(value = {"/edit-example"}, method = RequestMethod.PUT)
+    @RequestMapping(value = {"/edit"}, method = RequestMethod.PUT)
     public String updateUpsImpl(@RequestParam("id") Long id, @ModelAttribute("upsImplForm") UpsImplForm upsImplForm){
         UpsImpl updatedUpsImpl = upsImplService.getById(id);
         String name = upsImplForm.getName();
+        String serialNumber = upsImplForm.getSerialNumber();
         String enterprise = upsImplForm.getEnterprise();
         Boolean isBroken = upsImplForm.getIsBroken();
         if (name != null && !name.isEmpty()){
             updatedUpsImpl.setName(name);
+        }
+        if (serialNumber != null && !serialNumber.isEmpty()){
+            updatedUpsImpl.setSerialNumber(serialNumber);
         }
         if (enterprise != null && !enterprise.isEmpty()){
             updatedUpsImpl.setEnterprise(enterpriseService.getByName(enterprise));
@@ -97,13 +101,13 @@ public class MainUpsImplController {
         }
 
         upsImplService.save(updatedUpsImpl);
-        return "redirect:/upses/list-examples";
+        return "redirect:/upses/list";
     }
 
-    @RequestMapping("/delete-example/{id}")
+    @RequestMapping("/delete/{id}")
     public String deleteUpsImpl (@PathVariable("id") Long id){
         upsImplService.deleteById(id);
-        return "redirect:/upses/list-examples";
+        return "redirect:/upses/list";
     }
 
 

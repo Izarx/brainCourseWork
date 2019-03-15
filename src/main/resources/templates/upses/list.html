@@ -7,7 +7,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
@@ -27,19 +26,22 @@
                 <a class="nav-link" th:href="@{/enterprises/list}">List of Enterprises</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/upses/list-models}">List of UPS Models</a>
+                <a class="nav-link" th:href="@{/upses/models/list}">List of UPS Models</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" th:href="@{/upses/list-examples}">List of UPS Examples</a>
+                <a class="nav-link active" th:href="@{/upses/list}">List of UPS Examples</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/spares/list-models}">List of Spare Parts Models</a>
+                <a class="nav-link" th:href="@{/spares/models/list}">List of Spare Parts Models</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/spares/nics/list}">List of Network Cards</a>
             </li>
         </ul>
     </div>
 </nav>
 <br/><br/>
-<a th:href="@{/upses/add-example}">Add New Example of UPS</a>
+<a th:href="@{/upses/add}">Add New Example of UPS</a>
 <br/><br/>
 <div class="container">
     <table class="table table-striped">
@@ -63,8 +65,8 @@
             <td th:utext="${upsImpl.ups.name}">...</td>
             <td th:utext="${upsImpl.enterprise.name}">...</td>
             <td th:utext="${upsImpl.isBroken} ? 'broken' : 'in work'">...</td>
-            <td> <a th:href="@{'/upses/delete-example/' + ${upsImpl.id}}">Delete</a></td>
-            <td> <a th:href="@{'/upses/edit-example?id=' + ${upsImpl.id}}">Edit</a></td>
+            <td> <a th:href="@{'/upses/delete/' + ${upsImpl.id}}">Delete</a></td>
+            <td> <a th:href="@{'/upses/edit?id=' + ${upsImpl.id}}">Edit</a></td>
         </tr>
         </tbody>
     </table>

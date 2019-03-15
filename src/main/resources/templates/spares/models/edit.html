@@ -2,18 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
-  <title>Edit UPS Model</title>
+  <title>Edit Model of Spare Part</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="style.css" type="text/css">
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
-  <h1>Edit UPS Model</h1>
+  <h1>Edit Spare Part Model</h1>
 </div>
-
 </div>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -28,44 +26,46 @@
         <a class="nav-link" th:href="@{/enterprises/list}">List of Enterprises</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/upses/list-models}">List of UPS Models</a>
+        <a class="nav-link" th:href="@{/upses/models/list}">List of UPS Models</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/upses/list-examples}">List of UPS Examples</a>
+        <a class="nav-link" th:href="@{/upses/list}">List of UPS Examples</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" th:href="@{/spares/list-models}">List of Spare Parts Models</a>
+        <a class="nav-link" th:href="@{/spares/models/list}">List of Spare Parts Models</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/spares/nics/list}">List of Network Cards</a>
       </li>
     </ul>
   </div>
 </nav>
 <br/><br/>
-
 <div class="container">
-  <form th:action="@{'/upses/edit-model?id=' + ${ups.id}}"
-        th:object="${upsForm}"
-        th:method="put">
+  <form th:action="@{'/spares/models/edit?id=' + ${spare.id}}"
+        th:object="${modelEquipmentForm}"
+        method="post">
 
     <div class="form-group form-item">
       <label>ID:</label>
-      <label th:utext="${ups.id}"></label>
+      <label th:utext="${spare.id}"></label>
     </div>
 
     <div class="form-group form-item">
-      <label for="name">Name:</label>
-      <input type="text" th:field="*{name}" id="name" autofocus="autofocus" th:placeholder="${ups.name}">
+      <label for="name">Model:</label>
+      <input type="text" th:field="*{name}" id="name" autofocus="autofocus" th:placeholder="${spare.name}">
     </div>
     <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
 
     <div class="form-group form-item">
-      <label for="price">Address:</label>
-      <input type="text" id="price" th:field="*{price}" th:placeholder="${ups.price}">
+      <label for="price">Price:</label>
+      <input type="text" id="price" th:field="*{price}" th:placeholder="${spare.price}">
     </div>
     <p class="error-label" th:if="${#fields.hasErrors('price')}" th:errors="*{price}">ERROR</p>
 
     <div class="form-group form-item">
       <label>Type:</label>
-      <label th:text="${ups.type}"></label>
+      <label th:text="$ {spare.type}"></label>
     </div>
 
     <div class="form-group">

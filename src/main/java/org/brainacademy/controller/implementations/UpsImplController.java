@@ -20,13 +20,13 @@ public class UpsImplController {
     @Autowired
     private UpsImplService upsImplService;
 
-    @GetMapping(value = { "/list-examples" })
+    @GetMapping(value = { "/list" })
     public ResponseEntity<List<UpsImpl>> upsImplDetails(){
         List<UpsImpl> upsImplDetails = upsImplService.getList();
         return new ResponseEntity<>(upsImplDetails, HttpStatus.OK);
     }
 
-    @PostMapping(value = { "/add-example" })
+    @PostMapping(value = { "/add" })
     public ResponseEntity<?> saveUpsImpl(@RequestBody UpsImpl upsImpl){
         upsImplService.save(upsImpl);
         return new ResponseEntity<>(HttpStatus.OK);

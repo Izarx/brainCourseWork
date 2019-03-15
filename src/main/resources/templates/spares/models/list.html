@@ -1,19 +1,17 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8">
-    <title>Add new Enterprise</title>
+    <meta charset="UTF-8" />
+    <title>Spare Parts List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>Add New Enterprise</h1>
+    <h1>Spare Parts Models List</h1>
 </div>
-
 </div>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -34,7 +32,7 @@
                 <a class="nav-link" th:href="@{/upses/list}">List of UPS Examples</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/spares/models/list}">List of Spare Parts Models</a>
+                <a class="nav-link active" th:href="@{/spares/models/list}">List of Spare Parts Models</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/spares/nics/list}">List of Network Cards</a>
@@ -43,30 +41,31 @@
     </div>
 </nav>
 <br/><br/>
-
+<a th:href="@{/spares/models/add}">Add New Model of Spare Part</a>
+<br/><br/>
 <div class="container">
-    <form th:action="@{/enterprises/add}"
-          th:object="${enterpriseForm}"
-          method="post">
-        <div class="form-group form-item">
-            <label for="name">Name:</label>
-            <input type="text" th:field="*{name}" id="name" autofocus="autofocus" placeholder="Name">
-        </div>
-        <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
-        <div class="form-group form-item">
-            <label for="address">Address:</label>
-            <input type="text" id="address" th:field="*{address}" placeholder="Address">
-        </div>
-        <p class="error-label" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">ERROR</p>
-
-        <div class="form-group">
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-3">
-                    <input type="submit" name="login-submit" id="login-submit" value="Add">
-                </div>
-            </div>
-        </div>
-    </form>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Price</th>
+            <th>Type</th>
+            <th>Delete</th>
+            <th>Edit</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each ="spare : ${spareParts}">
+            <td th:utext="${spare.id}">...</td>
+            <td th:utext="${spare.name}">...</td>
+            <td th:utext="${spare.price}">...</td>
+            <td th:utext="${spare.type}">...</td>
+            <td> <a th:href="@{'/spares/models/delete/' + ${spare.id}}">Delete</a></td>
+            <td> <a th:href="@{'/spares/models/edit?id=' + ${spare.id}}">Edit</a></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 </body>
 </html>

@@ -31,7 +31,7 @@ public class Battery extends EquipmentImplementation {
     private UpsImpl ups;
 
     @Column(name = "date_factory")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateFactory;
 
     //CONSTRUCTOR

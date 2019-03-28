@@ -81,7 +81,7 @@
 
         <div class="form-group form-item">
             <label for="dateFactory">Date of Factory:</label>
-            <input type="date" id="dateFactory" th:field="*{dateFactory}" th:value="*{dateFactory}">
+            <input type="date" id="dateFactory" th:field="*{dateFactory}">
         </div>
 
         <p class="error-label" th:if="${#fields.hasErrors('dateFactory')}" th:errors="*{dateFactory}">ERROR</p>

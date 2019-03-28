@@ -1,5 +1,7 @@
 package org.brainacademy.controller.form;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 public class BatteryForm {
@@ -7,6 +9,7 @@ public class BatteryForm {
     private String serialNumber;
     private String model;
     private String ups;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate dateFactory;
     private boolean isBroken;
 
@@ -50,13 +53,13 @@ public class BatteryForm {
         this.dateFactory = dateFactory;
     }
 
-    public boolean isBroken()
+    public boolean getIsBroken()
     {
         return isBroken;
     }
 
-    public void setBroken(final boolean broken)
+    public void setIsBroken(final boolean isBroken)
     {
-        isBroken = broken;
+        this.isBroken = isBroken;
     }
 }

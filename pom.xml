@@ -86,6 +86,12 @@
             <version>5.2.16.Final</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-java8time</artifactId>
+            <version>3.0.1.RELEASE</version>
+        </dependency>
+
     </dependencies>
 
 </project>

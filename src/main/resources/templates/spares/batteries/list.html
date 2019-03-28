@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8" />
-    <title>Enterprises List</title>
+    <title>Batteries List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>Enterprises List</h1>
+    <h1>Batteries List</h1>
 </div>
 </div>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -23,7 +23,7 @@
                 <a class="nav-link" th:href="@{/users/list}">List of Users</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" th:href="@{/enterprises/list}">List of Enterprises</a>
+                <a class="nav-link" th:href="@{/enterprises/list}">List of Enterprises</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" th:href="@{/upses/models/list}">List of UPS Models</a>
@@ -38,13 +38,13 @@
                 <a class="nav-link" th:href="@{/spares/nics/list}">List of Network Cards</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/spares/batteries/list}">List of Batteries</a>
+                <a class="nav-link active" th:href="@{/spares/batteries/list}">List of Batteries</a>
             </li>
         </ul>
     </div>
 </nav>
 <br/><br/>
-<a th:href="@{/enterprises/add}">Add New Enterprise</a>
+<a th:href="@{/spares/batteries/add}">Add New Battery</a>
 <br/><br/>
 
 <div class="container">
@@ -52,19 +52,25 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>Name</th>
-            <th>Address</th>
+            <th>Serial Number</th>
+            <th>Battery Model</th>
+            <th>UPS</th>
+            <th>Date Factory</th>
+            <th>Status</th>
             <th>Delete</th>
             <th>Edit</th>
         </tr>
         </thead>
         <tbody>
-        <tr th:each ="enterprise : ${enterprises}">
-            <td th:utext="${enterprise.id}">...</td>
-            <td th:utext="${enterprise.name}">...</td>
-            <td th:utext="${enterprise.address}">...</td>
-            <td> <a th:href="@{'/enterprises/delete/' + ${enterprise.id}}">Delete</a></td>
-            <td> <a th:href="@{'/enterprises/edit?id=' + ${enterprise.id}}">Edit</a></td>
+        <tr th:each ="battery : ${batteries}">
+            <td th:utext="${battery.id}">...</td>
+            <td th:utext="${battery.serialNumber}">...</td>
+            <td th:utext="${battery.model.name}">...</td>
+            <td th:utext="${battery.ups.name}">...</td>
+            <td th:utext="${battery.dateFactory}">...</td>
+            <td th:utext="${battery.isBroken} ? 'broken' : 'in work'">...</td>
+            <td> <a th:href="@{'/spares/batteries/delete/' + ${battery.id}}">Delete</a></td>
+            <td> <a th:href="@{'/spares/batteries/edit?id=' + ${battery.id}}">Edit</a></td>
         </tr>
         </tbody>
     </table>

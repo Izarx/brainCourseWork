@@ -6,7 +6,7 @@ import org.brainacademy.model.api.Removable;
 import javax.persistence.*;
 
 /**
- * Abstract class produce implementation of equipment
+ * Abstract class produce implementation of equipment (UPS, network cards, batteries)
  * @author Ihor Zakharko
  */
 

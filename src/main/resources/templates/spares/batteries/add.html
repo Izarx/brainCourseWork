@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <title>Add new Network Card</title>
+    <title>Add New Battery</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
@@ -11,7 +11,7 @@
 <body>
 
 <div class="jumbotron text-center" style="margin-bottom:0">
-    <h1>Add New Network Card</h1>
+    <h1>Add New Battery</h1>
 </div>
 
 </div>
@@ -48,16 +48,9 @@
 <br/><br/>
 
 <div class="container">
-    <form th:action="@{/spares/nics/add}"
-          th:object="${networkCardForm}"
+    <form th:action="@{/spares/batteries/add}"
+          th:object="${batteryForm}"
           method="post">
-
-        <div class="form-group form-item">
-            <label for="name">Name:</label>
-            <input type="text" th:field="*{name}" id="name" autofocus="autofocus" placeholder="Name">
-        </div>
-
-        <p class="error-label" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">ERROR</p>
 
         <div class="form-group form-item">
             <label for="serialNumber">Serial Number:</label>
@@ -85,6 +78,13 @@
         </div>
 
         <p class="error-label" th:if="${#fields.hasErrors('ups')}" th:errors="*{ups}">ERROR</p>
+
+        <div class="form-group form-item">
+            <label for="dateFactory">Date of Factory:</label>
+            <input type="date" id="dateFactory" th:field="*{dateFactory}" th:value="*{dateFactory}">
+        </div>
+
+        <p class="error-label" th:if="${#fields.hasErrors('dateFactory')}" th:errors="*{dateFactory}">ERROR</p>
 
         <div class="form-group">
             <div class="row">

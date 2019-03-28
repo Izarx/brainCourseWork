@@ -17,7 +17,7 @@ public class BatteryServiceImpl implements BatteryService {
     @Override
     public Battery getById(final Long id)
     {
-        return null;
+        return batteryRepository.findById(id).orElse(null);
     }
 
     @Override
@@ -32,7 +32,7 @@ public class BatteryServiceImpl implements BatteryService {
 
     @Override
     public List<Battery> getListByIsBroken(boolean isBroken) {
-        return null;
+        return batteryRepository.findByIsBroken(isBroken);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class BatteryServiceImpl implements BatteryService {
     @Override
     public void deleteById(final Long id)
     {
-
+        batteryRepository.deleteById(id);
     }
 
     @Override

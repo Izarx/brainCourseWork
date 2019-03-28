@@ -25,7 +25,7 @@ public class MainNetworkCardController {
 
     @Autowired
     @Qualifier ("sparePart")
-    ModelEquipmentService networkCardModelService;
+    ModelEquipmentService modelService;
 
     @GetMapping(value = {"/list"})
     public String networkCardsList(Model model){
@@ -36,7 +36,7 @@ public class MainNetworkCardController {
     @GetMapping(value = {"/add"})
     public String addNetworkCard(Model model){
         model.addAttribute("networkCardForm", new NetworkCardForm());
-        model.addAttribute("spareParts", networkCardModelService.getListOfNames(networkCardModelService.getListByType(SparePartType.NETWORK_CARD)));
+        model.addAttribute("models", modelService.getListOfNames(modelService.getListByType(SparePartType.NETWORK_CARD)));
         model.addAttribute("upses", upsImplService.getListOfNames());
         return "spares/nics/add";
     }
@@ -54,7 +54,7 @@ public class MainNetworkCardController {
             NetworkCard newNetworkCard = new NetworkCard();
             newNetworkCard.setName(name);
             newNetworkCard.setSerialNumber(serialNumber);
-            newNetworkCard.setModel((SparePart) networkCardModelService.getByName(sparePartModel));
+            newNetworkCard.setModel((SparePart) modelService.getByName(sparePartModel));
             newNetworkCard.setUps(upsImplService.getByName(upsImpl));
             newNetworkCard.setIsBroken(false);
             networkCardService.save(newNetworkCard);
@@ -68,7 +68,7 @@ public class MainNetworkCardController {
     public String editNetworkCard(Model model, @RequestParam("id") Long id){
         model.addAttribute("networkCardForm", new NetworkCardForm());
         model.addAttribute("networkCard", networkCardService.getById(id));
-        model.addAttribute("spareParts", networkCardModelService.getListOfNames(networkCardModelService.getListByType(SparePartType.NETWORK_CARD)));
+        model.addAttribute("models", modelService.getListOfNames(modelService.getListByType(SparePartType.NETWORK_CARD)));
         model.addAttribute("upses", upsImplService.getListOfNames());
         return "spares/nics/edit";
     }
@@ -88,7 +88,7 @@ public class MainNetworkCardController {
             updatedNetworkCard.setSerialNumber(serialNumber);
         }
         if (sparePart != null && !sparePart.isEmpty()){
-            updatedNetworkCard.setModel((SparePart) networkCardModelService.getByName(sparePart));
+            updatedNetworkCard.setModel((SparePart) modelService.getByName(sparePart));
         }
         if (upsImpl != null && !upsImpl.isEmpty()) {
             updatedNetworkCard.setUps(upsImplService.getByName(upsImpl));

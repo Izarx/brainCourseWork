@@ -3,12 +3,13 @@ package org.brainacademy.model.implementations;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.brainacademy.model.models.SparePart;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 
 /**
- * Class to create table with examples of batteries
+ * Class to create examples of Batteries witch will be the rows in the table "batteries" in DB
  * @author Ihor Zakharko
  */
 
@@ -22,7 +23,7 @@ public class Battery extends EquipmentImplementation {
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_model", nullable = false)
     @JsonIgnore
-    private SparePart sparePart;
+    private SparePart model;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "id_ups", nullable = false)
@@ -30,7 +31,7 @@ public class Battery extends EquipmentImplementation {
     private UpsImpl ups;
 
     @Column(name = "date_factory")
-    // @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateFactory;
 
     //CONSTRUCTOR
@@ -39,12 +40,12 @@ public class Battery extends EquipmentImplementation {
 
     //GETTERS & SETTERS
 
-    public SparePart getSparePart() {
-        return sparePart;
+    public SparePart getModel() {
+        return model;
     }
 
-    public void setSparePart(SparePart sparePart) {
-        this.sparePart = sparePart;
+    public void setModel(SparePart model) {
+        this.model = model;
     }
 
     public UpsImpl getUps() {

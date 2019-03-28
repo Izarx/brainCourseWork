@@ -9,7 +9,7 @@ import org.brainacademy.model.models.Ups;
 import javax.persistence.*;
 
 /**
- * Class for create example of UPS which has some model, get one from upses
+ * Class to create examples of UPS witch will be the rows in the table "upses_impl" in DB
  * @author Ihor Zakharko
  */
 

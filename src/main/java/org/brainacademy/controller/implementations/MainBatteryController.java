@@ -11,10 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -67,6 +64,66 @@ public class MainBatteryController {
         }
 
         return "spares/batteries/add";
+    }
+
+    @GetMapping(value = {"/edit"})
+    public String editBattery(Model model, @RequestParam("id") Long id) {
+        model.addAttribute("batteryForm", new BatteryForm());
+        model.addAttribute("battery", batteryService.getById(id));
+        model.addAttribute("models", modelService.getListOfNames(modelService.getListByType(SparePartType.BATTERY)));
+        model.addAttribute("upses", upsImplService.getListOfNames());
+        return "spares/batteries/edit";
+    }
+
+    @RequestMapping(value = {"/edit"}, method = RequestMethod.PUT)
+    public String updateBattery(@RequestParam("id") Long id, @ModelAttribute ("batteryForm") BatteryForm batteryForm){
+        Battery updatedBattery = batteryService.getById(id);
+        String serialNumber = batteryForm.getSerialNumber();
+        String batteryModel = batteryForm.getModel();
+        String upsImpl = batteryForm.getUps();
+        LocalDate dateFactory = batteryForm.getDateFactory();
+        Boolean isBroken = batteryForm.getIsBroken();
+
+        if (serialNumber != null && !serialNumber.isEmpty()){
+            updatedBattery.setSerialNumber(serialNumber);
+        }
+        else {
+            updatedBattery.setSerialNumber(updatedBattery.getSerialNumber());
+        }
+        if (batteryModel != null && !batteryModel.isEmpty()){
+            updatedBattery.setModel((SparePart) modelService.getByName(batteryModel));
+        }
+        else {
+            updatedBattery.setModel(updatedBattery.getModel());
+        }
+        if (upsImpl != null && !upsImpl.isEmpty()) {
+            updatedBattery.setUps(upsImplService.getByName(upsImpl));
+        }
+        else {
+            updatedBattery.setUps(updatedBattery.getUps());
+        }
+        if (dateFactory != null && !dateFactory.isAfter(LocalDate.now())) {
+            updatedBattery.setDateFactory(dateFactory);
+        }
+        else {
+            updatedBattery.setDateFactory(updatedBattery.getDateFactory());
+        }
+        if (isBroken != null) {
+            updatedBattery.setIsBroken(isBroken);
+        }
+        else {
+            updatedBattery.setIsBroken(updatedBattery.getIsBroken());
+        }
+
+        batteryService.save(updatedBattery);
+
+        return "redirect:/spares/batteries/list";
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteBattery (@PathVariable("id") Long id) {
+        batteryService.deleteById(id);
+        return "redirect:/spares/batteries/list";
     }
 
 }

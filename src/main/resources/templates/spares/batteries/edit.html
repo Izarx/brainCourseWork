@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Edit Battery</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center" style="margin-bottom:0">
+  <h1>Edit Battery</h1>
+</div>
+
+</div>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/users/list}">List of Users</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/enterprises/list}">List of Enterprises</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/upses/models/list}">List of UPS Models</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/upses/list}">List of UPS Examples</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/spares/models/list}">List of Spare Parts Models</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/spares/nics/list}">List of Network Cards</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/spares/batteries/list}">List of Batteries</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br/><br/>
+
+<div class="container">
+  <form th:action="@{'/spares/batteries/edit?id=' + ${battery.id}}"
+        th:object="${batteryForm}"
+        th:method="put">
+
+    <div class="form-group form-item">
+      <label>ID:</label>
+      <label th:utext="${battery.id}"></label>
+    </div>
+
+    <div class="form-group form-item">
+      <label for="serialNumber">Serial Number:</label>
+      <input type="text" th:field="*{serialNumber}" id="serialNumber" autofocus="autofocus" th:placeholder="${battery.serialNumber}">
+    </div>
+    <p class="error-label" th:if="${#fields.hasErrors('serialNumber')}" th:errors="*{serialNumber}">ERROR</p>
+
+    <div class="form-group form-item">
+      <label for="model">Battery Model:</label>
+      <select class="form-control" id="model" th:field="*{model}">
+        <option value="0" th:utext="${battery.model.name}">...</option>
+        <option th:each="model : ${models}" th:value="${model}" th:text="${model}"></option>
+      </select>
+    </div>
+    <p class="error-label" th:if="${#fields.hasErrors('model')}" th:errors="*{model}">ERROR</p>
+
+    <div class="form-group form-item">
+      <label for="ups">Battery Model:</label>
+      <select class="form-control" id="ups" th:field="*{ups}">
+        <option value="0" th:utext="${battery.ups.name}">...</option>
+        <option th:each="ups : ${upses}" th:value="${ups}" th:text="${ups}"></option>
+      </select>
+    </div>
+    <p class="error-label" th:if="${#fields.hasErrors('ups')}" th:errors="*{ups}">ERROR</p>
+
+    <div class="form-group form-item">
+      <label for="dateFactory">Date of Factory:</label>
+      <input type="date" id="dateFactory" th:field="*{dateFactory}" th:placeholder="${battery.dateFactory}">
+    </div>
+    <p class="error-label" th:if="${#fields.hasErrors('dateFactory')}" th:errors="*{dateFactory}">ERROR</p>
+
+    <div class="form-group form-item">
+      <label for="isBroken">Status:</label>
+      <select class="form-control" id="isBroken" th:field="*{isBroken}">
+        <option value="0" th:utext="${battery.isBroken}">...</option>
+        <option value="1" th:utext="${!battery.isBroken}">...</option>
+      </select>
+    </div>
+    <p class="error-label" th:if="${#fields.hasErrors('isBroken')}" th:errors="*{isBroken}">ERROR</p>
+
+    <div class="form-group">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-3">
+          <input type="submit" name="login-submit" id="login-submit" value="Update">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

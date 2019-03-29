@@ -45,16 +45,16 @@ public class MainNetworkCardController {
     public String saveNetworkCard (Model model, @ModelAttribute ("networkCardForm") NetworkCardForm networkCardForm){
         String name = networkCardForm.getName();
         String serialNumber = networkCardForm.getSerialNumber();
-        String sparePartModel = networkCardForm.getModel();
+        String networkCardModel = networkCardForm.getModel();
         String upsImpl = networkCardForm.getUps();
 
         if ((name != null && !name.isEmpty()) && (serialNumber != null && !serialNumber.isEmpty()) &&
-                (sparePartModel != null && !sparePartModel.isEmpty()) && (upsImpl != null && !upsImpl.isEmpty())){
+                (networkCardModel != null && !networkCardModel.isEmpty()) && (upsImpl != null && !upsImpl.isEmpty())){
 
             NetworkCard newNetworkCard = new NetworkCard();
             newNetworkCard.setName(name);
             newNetworkCard.setSerialNumber(serialNumber);
-            newNetworkCard.setModel((SparePart) modelService.getByName(sparePartModel));
+            newNetworkCard.setModel((SparePart) modelService.getByName(networkCardModel));
             newNetworkCard.setUps(upsImplService.getByName(upsImpl));
             newNetworkCard.setIsBroken(false);
             networkCardService.save(newNetworkCard);
@@ -78,24 +78,29 @@ public class MainNetworkCardController {
         NetworkCard updatedNetworkCard = networkCardService.getById(id);
         String name = networkCardForm.getName();
         String serialNumber = networkCardForm.getSerialNumber();
-        String sparePart = networkCardForm.getModel();
+        String networkCardModel = networkCardForm.getModel();
         String upsImpl = networkCardForm.getUps();
         Boolean isBroken = networkCardForm.getIsBroken();
         if (name != null && !name.isEmpty()){
             updatedNetworkCard.setName(name);
         }
+        else updatedNetworkCard.setName(updatedNetworkCard.getName());
         if (serialNumber != null && !serialNumber.isEmpty()){
             updatedNetworkCard.setSerialNumber(serialNumber);
         }
-        if (sparePart != null && !sparePart.isEmpty()){
-            updatedNetworkCard.setModel((SparePart) modelService.getByName(sparePart));
+        else updatedNetworkCard.setSerialNumber(updatedNetworkCard.getSerialNumber());
+        if (networkCardModel != null && !networkCardModel.isEmpty()){
+            updatedNetworkCard.setModel((SparePart) modelService.getByName(networkCardModel));
         }
+        else updatedNetworkCard.setModel(updatedNetworkCard.getModel());
         if (upsImpl != null && !upsImpl.isEmpty()) {
             updatedNetworkCard.setUps(upsImplService.getByName(upsImpl));
         }
+        else updatedNetworkCard.setUps(updatedNetworkCard.getUps());
         if (isBroken != null){
             updatedNetworkCard.setIsBroken(isBroken);
         }
+        else updatedNetworkCard.setIsBroken(updatedNetworkCard.getIsBroken());
 
         networkCardService.save(updatedNetworkCard);
         return "redirect:/spares/nics/list";
